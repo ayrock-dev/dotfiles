@@ -29,7 +29,7 @@ local function biome_or_prettier(bufnr)
     return { 'prettier', 'prettierd' }
   end
 
-  -- use biome lsp
+  -- use lsp
   return {}
 end
 
