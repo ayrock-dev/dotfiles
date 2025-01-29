@@ -16,6 +16,8 @@ else
     echo "Brewfile not found. Skipping package installation."
 fi
 
+source ~/.zshrc
+
 # Stow
 stow -R -v -t ~ -d ~/dev/dotfiles/home .
 
@@ -30,7 +32,11 @@ else
 fi
 
 # Node
-volta install node
+if ! command -v node &> /dev/null; then
+    volta install node
+fi
 
-# Pnpm
-volta install pnpm
+# pnpm
+if ! command -v pnpm &> /dev/null; then
+    volta install pnpm
+fi
