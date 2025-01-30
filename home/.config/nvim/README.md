@@ -7,8 +7,6 @@ some edits
 > ⚠️ Backup your previous configuration (if any exists)
 #### Requirements
 
-[telescope](https://github.com/nvim-telescope/telescope.nvim#suggested-dependencies) requires [ripgrep](https://github.com/BurntSushi/ripgrep#installation).
-
 ```sh
 brew install ripgrep
 ```
