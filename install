@@ -11,7 +11,13 @@ fi
 # Brewfile
 if [ -f "Brewfile" ]; then
     echo "Installing packages from Brewfile..."
-    brew bundle
+
+    # only install casks on osx, not in a linux env
+    if [[ $(uname) == "Darwin" ]]; then
+        brew bundle
+    else
+        brew bundle --no-cask
+    fi
 else
     echo "Brewfile not found. Skipping package installation."
 fi
