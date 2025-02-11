@@ -3,7 +3,6 @@ return {
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
-    { 'zbirenbaum/copilot-cmp', opts = {} },
   },
   config = function()
     local cmp = require 'cmp'
@@ -42,7 +41,6 @@ return {
         end, { 'i', 's' }),
       },
       sources = {
-        { name = 'copilot' },
         { name = 'nvim_lsp' },
       },
     }
