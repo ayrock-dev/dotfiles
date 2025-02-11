@@ -191,6 +191,13 @@ return {
       end,
       desc = '[g]oto t[y]pe definition',
     },
+    {
+      '<leader>e',
+      function()
+        Snacks.explorer()
+      end,
+      desc = '[e]xplorer',
+    },
   },
   init = function()
     vim.api.nvim_create_autocmd('User', {
