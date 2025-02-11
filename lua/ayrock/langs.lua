@@ -10,7 +10,6 @@ return {
   -- See: https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#supported-languages
   treesitter_langs = {
     'bash',
-    'c',
     'diff',
     'html',
     'lua',
@@ -22,11 +21,13 @@ return {
     'typescript',
     'dockerfile',
     'json',
+    'sql',
     'toml',
     'prisma',
     'proto',
     'vim',
     'vimdoc',
+    'yaml',
   },
   -- language servers
   -- See: https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
@@ -41,6 +42,8 @@ return {
     tsserver = {},
     html = {},
     prismals = {},
+    eslint = {},
+    sqlls = {},
     tailwindcss = {},
     -- htmx = {},
     dockerls = {},
