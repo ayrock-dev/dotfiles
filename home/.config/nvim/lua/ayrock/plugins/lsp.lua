@@ -53,15 +53,12 @@ return {
       end,
     })
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-
-    require('mason').setup()
-
     local servers = require('ayrock/langs').servers
     local ensure_installed = vim.tbl_keys(servers)
-
     require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
+
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
     require('mason-lspconfig').setup({
       handlers = {
         function(server_name)
