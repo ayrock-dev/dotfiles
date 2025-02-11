@@ -162,6 +162,35 @@ return {
       end,
       desc = '[g]it [s]tatus',
     },
+    {
+      '<leader>gd',
+      function()
+        Snacks.picker.lsp_definitions()
+      end,
+      desc = '[g]oto [d]efinition',
+    },
+    {
+      '<leader>gr',
+      function()
+        Snacks.picker.lsp_references()
+      end,
+      nowait = true,
+      desc = '[g]oto [r]eferences',
+    },
+    {
+      '<leader>gI',
+      function()
+        Snacks.picker.lsp_implementations()
+      end,
+      desc = '[g]oto [I]mplementation',
+    },
+    {
+      '<leader>gy',
+      function()
+        Snacks.picker.lsp_type_definitions()
+      end,
+      desc = '[g]oto t[y]pe definition',
+    },
   },
   init = function()
     vim.api.nvim_create_autocmd('User', {
