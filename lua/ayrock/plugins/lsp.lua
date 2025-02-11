@@ -7,7 +7,16 @@ return {
     'williamboman/mason-lspconfig.nvim',
 
     -- Toasts with status updates from the LSP
-    { 'j-hui/fidget.nvim', opts = {} },
+    {
+      'j-hui/fidget.nvim',
+      opts = {
+        notification = {
+          window = {
+              winblend = 0,
+          },
+        }
+      }
+    },
 
     -- Additional lua configuration, makes nvim stuff amazing!
     'folke/neodev.nvim',
