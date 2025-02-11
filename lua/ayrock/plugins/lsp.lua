@@ -87,7 +87,14 @@ return {
       rust_analyzer = {},
       tsserver = {},
       html = {},
-
+      htmx = {},
+      ruby_ls = {}, -- .rb
+      sorbet = {}, -- .rb
+      -- rubocop = {},
+      yamlls = {},
+      taplo = {}, -- .toml
+      prismals = {}, -- .prsima
+      tailwindcss = {},
       lua_ls = {
         Lua = {
           workspace = { checkThirdParty = false },
