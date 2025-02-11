@@ -2,10 +2,6 @@ return {
   'ThePrimeagen/harpoon',
   name = 'harpoon',
   branch = 'harpoon2',
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-telescope/telescope.nvim',
-  },
   config = function()
     local harpoon = require('harpoon').setup()
     local conf = require('telescope.config').values
@@ -58,4 +54,8 @@ return {
       harpoon:list():next()
     end, { desc = 'Goto [N]ext Harpoon four' })
   end,
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    'nvim-telescope/telescope.nvim',
+  },
 }
