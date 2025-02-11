@@ -12,7 +12,7 @@ return {
         diagnostics = 'nvim_lsp',
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
           local icon = level:match('error') and icons.diagnostics.error or icons.diagnostics.warn
-          return vim.trim(' ' .. icon .. ' ' .. count)
+          return vim.trim(' ' .. icon .. count)
         end,
         show_buffer_close_icons = false,
         show_close_icon = false,

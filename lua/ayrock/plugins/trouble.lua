@@ -1,21 +1,31 @@
 return {
-  'folke/trouble.nvim',
-  branch = 'dev', -- v3
+  'folke/trouble.nvim', -- v3
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = {},
-  config = function()
-    vim.keymap.set('n', '<leader>tt', function()
-      require('trouble').toggle('diagnostics')
-    end, { desc = '[T]oggle [T]rouble' })
-
-    vim.keymap.set('n', '[d', function()
-      require('trouble').open()
-      require('trouble').previous({ skip_groups = true, jump = true })
-    end, { desc = 'Previous Trouble' })
-
-    vim.keymap.set('n', ']d', function()
-      require('trouble').open()
-      require('trouble').next({ skip_groups = true, jump = true })
-    end, { desc = 'Next Trouble' })
-  end,
+  cmd = 'Trouble',
+  keys = {
+    {
+      '<leader>tt',
+      function()
+        require('trouble').toggle('diagnostics')
+      end,
+      desc = '[T]oggle [T]rouble',
+    },
+    {
+      '[d',
+      function()
+        require('trouble').open()
+        require('trouble').prev({ skip_groups = true, jump = true })
+      end,
+      desc = 'Previous Trouble ([d]iagnostic)',
+    },
+    {
+      ']d',
+      function()
+        require('trouble').open()
+        require('trouble').next({ skip_groups = true, jump = true })
+      end,
+      desc = 'Next Trouble ([d]iagnostic)',
+    },
+  },
 }
