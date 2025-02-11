@@ -40,7 +40,11 @@ return {
       },
     },
     rust_analyzer = {},
-    --tsserver = {},
+    ts_ls = {
+      server_capabilities = {
+        documentFormattingProvider = false,
+      },
+    },
     graphql = {},
     html = {},
     prismals = {},
@@ -48,7 +52,11 @@ return {
     sqlls = {},
     tailwindcss = {},
     dockerls = {},
-    jsonls = {},
+    jsonls = {
+      server_capabilities = {
+        documentFormattingProvider = false,
+      },
+    },
     yamlls = {},
     taplo = {},
     biome = {},
