@@ -1,6 +1,3 @@
--- [[ Basic Keymaps ]]
--- See `:help vim.keymap.set()`
-
 -- Keymaps for better default experience
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
@@ -13,11 +10,8 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 -- greatest remap ever
 vim.keymap.set('x', '<leader>p', [['_dP]])
-
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({ 'n', 'v' }, '<leader>y', [['+y]])
-vim.keymap.set('n', '<leader>Y', [['+Y]])
-
-vim.keymap.set({ 'n', 'v' }, '<leader>d', [['_d]])
-
-vim.keymap.set('i', '<C-c>', '<Esc>')
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [['+y]], { desc = '[y]ank line' })
+vim.keymap.set('n', '<leader>Y', [['+Y]], { desc = '[Y]ank line' })
+vim.keymap.set({ 'n', 'v' }, '<leader>d', [['_d]], { desc = '[d]elete line' })
+vim.keymap.set('i', '<C-c>', '<Esc>', { desc = '[C-c] escape' })

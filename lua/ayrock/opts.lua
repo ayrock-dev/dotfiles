@@ -1,6 +1,3 @@
--- [[ Options ]]
--- See `:help vim.o`
-
 -- Set highlight on search
 vim.o.hlsearch = false
 
@@ -38,10 +35,7 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 
 -- Tabline
-vim.o.showtabline = 2
-
--- Restore sessions including tabs
-vim.opt.sessionoptions = 'curdir,folds,globals,help,tabpages,terminal,winsize'
+vim.o.showtabline = 0
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'

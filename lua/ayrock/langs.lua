@@ -19,7 +19,7 @@ return {
     'bash',
     'json',
     'yaml',
-    'ruby',
+    -- 'ruby',
     'toml',
     'prisma',
     'proto',
@@ -27,26 +27,24 @@ return {
   -- language servers
   -- See: https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
   servers = {
-    lua_ls = { -- .lua
+    lua_ls = {
       Lua = {
         workspace = { checkThirdParty = false },
         telemetry = { enable = false },
-        -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-        -- diagnostics = { disable = { 'missing-fields' } },
       },
     },
-    rust_analyzer = {}, -- .rs
+    rust_analyzer = {},
     tsserver = {},
     html = {},
-    -- htmx = {},
-    dockerls = {}, -- Dockerfile
-    jsonls = {}, -- .json
-    yamlls = {}, -- .yaml
-    ruby_lsp = {}, -- .rb
-    rubocop = {}, -- Ruby (linter)
-    sorbet = {}, -- Ruby (type hints)
-    taplo = {}, -- .toml
-    prismals = {}, -- .prsima
+    prismals = {},
     tailwindcss = {},
+    -- htmx = {},
+    dockerls = {},
+    jsonls = {},
+    yamlls = {},
+    -- ruby_lsp = {},
+    -- rubocop = {},
+    -- sorbet = {},
+    taplo = {},
   },
 }
