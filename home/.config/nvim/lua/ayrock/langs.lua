@@ -11,6 +11,7 @@ return {
   treesitter_langs = {
     'bash',
     'diff',
+    'elixir',
     'html',
     'lua',
     'luadoc',
@@ -26,6 +27,7 @@ return {
     'toml',
     'prisma',
     'proto',
+    'python',
     'vim',
     'vimdoc',
     'yaml',
@@ -45,9 +47,11 @@ return {
         documentFormattingProvider = false,
       },
     },
+    elixirls = {},
     graphql = {},
     html = {},
     prismals = {},
+    pyright = {}, -- python lsp by microsoft
     eslint = {},
     sqlls = {},
     tailwindcss = {},
