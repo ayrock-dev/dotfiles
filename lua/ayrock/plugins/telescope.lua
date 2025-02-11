@@ -16,7 +16,8 @@ return {
     vim.keymap.set('n', '<leader>sg', telescope_builtin.live_grep, { desc = '[s]earch by [g]rep' })
     vim.keymap.set('n', '<leader>sd', telescope_builtin.diagnostics, { desc = '[s]earch [d]iagnostics' })
     vim.keymap.set('n', '<leader>sr', telescope_builtin.resume, { desc = '[s]earch [r]esume' })
-    vim.keymap.set('n', '<leader>s.', telescope_builtin.oldfiles, { desc = '[s]earch (previous)' })
-    vim.keymap.set('n', '<leader><leader>', telescope_builtin.buffers, { desc = 'search open buffers' })
+    vim.keymap.set('n', '<leader>s.', telescope_builtin.oldfiles, { desc = '[s]earch previous [.]' })
+    vim.keymap.set('n', '<leader>sb', telescope_builtin.buffers, { desc = '[s]earch open [b]uffers' })
+    vim.keymap.set('n', '<leader><leader>', telescope_builtin.buffers, { desc = '[s]earch open buffers [<leader>]' })
   end,
 }

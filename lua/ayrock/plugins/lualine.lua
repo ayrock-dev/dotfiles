@@ -57,13 +57,12 @@ return {
           },
         },
         lualine_y = {
-          { 'progress', separator = ' ', padding = { left = 1, right = 0 } },
-          { 'location', padding = { left = 0, right = 1 } },
+          'encoding',
+          'filetype',
         },
         lualine_z = {
-          function()
-            return icons.clock .. ' ' .. os.date('%I:%M%p')
-          end,
+          { 'progress', separator = ' ', padding = { left = 1, right = 0 } },
+          { 'location', padding = { left = 0, right = 1 } },
         },
       },
     }
