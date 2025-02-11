@@ -1,9 +1,18 @@
--- Keymaps for better default experience
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+-- disable arrow keys
+vim.keymap.set({ 'n', 'i' }, '<up>', '<Nop>')
+vim.keymap.set({ 'n', 'i' }, '<down>', '<Nop>')
+vim.keymap.set({ 'n', 'i' }, '<left>', '<Nop>')
+vim.keymap.set({ 'n', 'i' }, '<right>', '<Nop>')
 
 -- dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- [[ Remaps from bautistaaa ]]
+vim.keymap.set('n', '<leader>x', '<Cmd>bd<CR>', { desc = '[x] close current buffer' })
+vim.keymap.set('n', '<leader>xx', '<Cmd>%bd<CR>', { desc = '[xx] close all buffers' })
 
 -- [[ Remaps from ThePrimeagen ]]
 -- See: https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
