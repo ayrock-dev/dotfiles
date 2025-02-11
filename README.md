@@ -4,8 +4,7 @@ A nvim configuration based on [kickstart.nvim](https://github.com/nvim-lua/kicks
 
 ## Installation
 
-> **NOTE**
-> [Backup](#FAQ) your previous configuration (if any exists)
+> **NOTE** > [Backup](#FAQ) your previous configuration (if any exists)
 
 Requirements:
 
@@ -41,3 +40,64 @@ The `Lazy` plugin manager will start automatically on the first run and install 
 ## `Lazy` Usage
 
 - `opts = {}` is the same as calling `setup({})`
+
+## Ayrock Dotfiles
+
+`~/.zshrc`
+
+```
+PS1="%n %1~ λ "
+
+alias vim='nvim'
+```
+
+`~/.config/alacritty/alacritty.toml`
+
+```
+# https://github.com/folke/tokyonight.nvim/blob/main/extras/alacritty/tokyonight_night.yml
+[font]
+size = 14.0
+
+[font.normal]
+family = "BerkeleyMono Nerd Font"
+style = "Regular"
+
+[colors]
+# TokyoNight Alacritty Colors
+
+# Default colors
+[colors.primary]
+background = '0x1a1b26'
+foreground = '0xc0caf5'
+
+# Normal colors
+[colors.normal]
+black =   '0x15161e'
+red =     '0xf7768e'
+green =   '0x9ece6a'
+yellow =  '0xe0af68'
+blue =    '0x7aa2f7'
+magenta = '0xbb9af7'
+cyan =    '0x7dcfff'
+white =   '0xa9b1d6'
+
+# Bright colors
+[colors.bright]
+black =   '0x414868'
+red =     '0xf7768e'
+green =   '0x9ece6a'
+yellow =  '0xe0af68'
+blue =    '0x7aa2f7'
+magenta = '0xbb9af7'
+cyan =    '0x7dcfff'
+white =   '0xc0caf5'
+
+[[colors.indexed_colors]]
+index = 16
+color = '0xff9e64'
+
+[[colors.indexed_colors]]
+index = 17
+color = '0xdb4b4b'
+
+```
