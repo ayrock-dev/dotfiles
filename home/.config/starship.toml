@@ -12,9 +12,7 @@ $git_status\
 [](fg:peach bg:green)\
 $nodejs\
 $bun\
-$c\
 $rust\
-$golang\
 $python\
 $lua\
 $zig\
@@ -119,18 +117,8 @@ symbol = "🍞"
 style = "bg:green"
 format = '[[ $symbol( $version) ](fg:base bg:green)]($style)'
 
-[c]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:base bg:green)]($style)'
-
 [rust]
 symbol = "🦀"
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:base bg:green)]($style)'
-
-[golang]
-symbol = ""
 style = "bg:green"
 format = '[[ $symbol( $version) ](fg:base bg:green)]($style)'
 
