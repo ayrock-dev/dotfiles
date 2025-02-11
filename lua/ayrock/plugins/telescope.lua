@@ -4,8 +4,13 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
   },
-  opts = {},
-  config = function()
+  opts = {
+    defaults = {
+      initial_mode = 'normal',
+      hidden = true,
+    },
+  },
+  config = function(opts)
     local telescope_builtin = require('telescope.builtin')
 
     vim.keymap.set('n', '<leader>sh', telescope_builtin.help_tags, { desc = '[s]earch [h]elp' })
@@ -18,6 +23,8 @@ return {
     vim.keymap.set('n', '<leader>sr', telescope_builtin.resume, { desc = '[s]earch [r]esume' })
     vim.keymap.set('n', '<leader>s.', telescope_builtin.oldfiles, { desc = '[s]earch previous [.]' })
     vim.keymap.set('n', '<leader>sb', telescope_builtin.buffers, { desc = '[s]earch open [b]uffers' })
-    vim.keymap.set('n', '<leader><leader>', telescope_builtin.buffers, { desc = '[s]earch open buffers [<leader>]' })
+    vim.keymap.set('n', '<leader><leader>', telescope_builtin.buffers, { desc = 'search open buffers [<leader>]' })
+
+    return opts
   end,
 }
