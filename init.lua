@@ -29,7 +29,6 @@ require('lazy').setup({
       flavour = 'mocha', -- latte, frappe, macchiato, mocha
       fidget = true,
       gitsigns = true,
-      harpoon = true,
       indent_blankline = {
         enabled = true,
         scope_color = '', -- catppuccin color (eg. `lavender`) Default: text
