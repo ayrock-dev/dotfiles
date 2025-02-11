@@ -1,4 +1,4 @@
 return {
   'prichrd/netrw.nvim',
-  opts = {}
+  opts = {},
 }

@@ -6,10 +6,10 @@ return {
   },
   opts = {},
   config = function()
-    local telescope_builtin = require 'telescope.builtin'
+    local telescope_builtin = require('telescope.builtin')
 
     vim.keymap.set('n', '<Leader>s', function()
-      telescope_builtin.find_files { hidden = true }
+      telescope_builtin.find_files({ hidden = true })
     end, { desc = '[S]earch files' })
 
     vim.keymap.set('n', '<Leader>ff', function()
