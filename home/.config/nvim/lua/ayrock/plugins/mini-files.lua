@@ -4,19 +4,27 @@ return {
     version = '*',
     opts = {},
     config = function()
+      local MiniFiles = require('mini.files')
+
       local function toggle_minifiles()
-        local MiniFiles = require('mini.files')
         if not MiniFiles.close() then
           MiniFiles.open()
         end
+      end
+
+      local function toggle_minifiles_current()
+        local _ = MiniFiles.close() or MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
+        vim.schedule(function()
+          MiniFiles.reveal_cwd()
+        end)
       end
 
       local map = function(keys, func, desc)
         vim.keymap.set('n', keys, func, { desc = desc })
       end
 
-      map('-', toggle_minifiles, '[-] Explore')
-      map('<leader>-', toggle_minifiles, '[-] Explore')
+      map('-', toggle_minifiles_current, '[-] Explore')
+      map('<leader>-', toggle_minifiles_current, '[-] Explore')
       map('<leader>E', toggle_minifiles, '[E]xplore')
 
       vim.api.nvim_create_autocmd('User', {
