@@ -8,7 +8,7 @@ return {
   config = function()
     local cmp = require('cmp')
 
-    cmp.setup({
+    local opts = {
       completion = { completeopt = 'menu,menuone,noinsert' },
       mapping = cmp.mapping.preset.insert({
         -- Select the [n]ext item
@@ -41,6 +41,8 @@ return {
         { name = 'path' },
         { name = 'supermaven' },
       },
-    })
+    }
+
+    return opts
   end,
 }
