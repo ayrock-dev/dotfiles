@@ -39,7 +39,7 @@ return {
       },
     },
     rust_analyzer = {},
-    tsserver = {},
+    --tsserver = {},
     html = {},
     prismals = {},
     eslint = {},
