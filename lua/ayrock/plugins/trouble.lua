@@ -1,6 +1,6 @@
 return {
-  "folke/trouble.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  'folke/trouble.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = {},
   config = function()
     vim.keymap.set('n', '<leader>tt', function()
@@ -10,7 +10,7 @@ return {
     vim.keymap.set('n', '[d', function()
       require('trouble').previous()
     end, { desc = 'Previous Trouble' })
-    
+
     vim.keymap.set('n', ']d', function()
       require('trouble').next()
     end, { desc = 'Next Trouble' })
