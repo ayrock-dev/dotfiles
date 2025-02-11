@@ -22,8 +22,6 @@ return {
     'typescript',
     'dockerfile',
     'json',
-    'yaml',
-    -- 'ruby',
     'toml',
     'prisma',
     'proto',
@@ -48,9 +46,6 @@ return {
     dockerls = {},
     jsonls = {},
     yamlls = {},
-    -- ruby_lsp = {},
-    -- rubocop = {},
-    -- sorbet = {},
     taplo = {},
   },
 }
