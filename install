@@ -1,37 +1,60 @@
 #!/bin/bash
 
+# zsh
+if [[ $(uname) != "Darwin" ]]; then
+    if ! command -v zsh &> /dev/null; then
+        echo "Installing zsh..."
+        sudo apt update
+        sudo apt install -y zsh
+
+        if [ ! -f "~/.zshrc" ]; then
+            touch ~/.zshrc
+        fi
+    else
+        echo "zsh is already installed"
+    fi
+    if [[ $SHELL != $(which zsh) ]]; then
+        echo "Setting zsh as default shell..."
+        chsh -s $(which zsh)
+
+        echo "Please log out and log back in for the shell change to take effect."
+        exit 1
+    else
+        echo "zsh is already the default shell"
+    fi
+fi
+
 # Homebrew
 if ! command -v brew &> /dev/null; then
     echo "Installing Homebrew..."
     curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 
+
+    if [ ! -f "~/.zprofile" ]; then
+        touch ~/.zprofile
+    fi
+
     if [[ $(uname) == "Darwin" ]]; then
+        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
         eval "$(/opt/homebrew/bin/brew shellenv)"
     else
+        echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.zprofile
         eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     fi
 else
     echo "Homebrew is already installed"
 fi
 
-
 # Brewfile
 if [ -f "Brewfile" ]; then
     echo "Installing packages from Brewfile..."
-
-    if [[ $(uname) == "Darwin" ]]; then
-        brew bundle
-    else
-        brew bundle --no-cask
-    fi
+    brew bundle
 else
     echo "Brewfile not found. Skipping package installation."
 fi
 
-source ~/.zshrc
-
 # Stow
-stow -R -v -t ~ -d ~/dev/dotfiles/home .
+stow -R -v -t ~ -d ./home .
 
 source ~/.zshrc
 
@@ -45,10 +68,12 @@ fi
 
 # Node
 if ! command -v node &> /dev/null; then
+    echo "Installing node..."
     volta install node
 fi
 
 # pnpm
 if ! command -v pnpm &> /dev/null; then
+    echo "Installing pnpm..."
     volta install pnpm
 fi
