@@ -9,7 +9,7 @@ return {
     },
     sections = {
       lualine_b = {'branch','diff','diagnostics'},
-      lualine_c = {'filename',path=1},
+      lualine_c = {'filename',{path=1}},
       lualine_x = {'filetype'},
     },
   },

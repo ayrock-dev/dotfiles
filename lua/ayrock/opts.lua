@@ -33,9 +33,6 @@ vim.wo.signcolumn = 'yes'
 -- Always keep 8 lines above/below cursor unless at start/end of file
 vim.opt.scrolloff = 8
 
--- Place a column line
-vim.opt.colorcolumn = "80"
-
 -- Decrease update time
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
