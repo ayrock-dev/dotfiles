@@ -3,7 +3,9 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
+    bufdelete = { enabled = true },
     dashboard = {
+      enabled = true,
       preset = {
         keys = {
           { icon = ' ', key = 's', desc = 'Restore Session', section = 'session' },
@@ -23,54 +25,71 @@ return {
         { section = 'startup' },
       },
     },
-    notifier = {},
+    git = { enabled = true },
+    gitbrowse = { enabled = true },
+    indent = { enabled = true },
+    input = { enabled = true },
+    notifier = { enabled = true },
+    scroll = { enabled = true },
   },
-  config = function(opts)
-    -- lsp notifications
-
-    --@type table<number, {token:lsp.ProgressToken, msg:string, done:boolean}[]>
-    local progress = vim.defaulttable()
-    vim.api.nvim_create_autocmd('LspProgress', {
-      ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
-      callback = function(ev)
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        local value = ev.data.params.value --[[@as {percentage?: number, title?: string, message?: string, kind: "begin" | "report" | "end"}]]
-        if not client or type(value) ~= 'table' then
-          return
+  keys = {
+    {
+      '<leader>n',
+      function()
+        Snacks.notifier.show_history()
+      end,
+      desc = '[n]otification history',
+    },
+    {
+      '<leader>bd',
+      function()
+        Snacks.bufdelete()
+      end,
+      desc = 'delete buffer',
+    },
+    {
+      '<leader>cR',
+      function()
+        Snacks.rename.rename_file()
+      end,
+      desc = 'rename file',
+    },
+    {
+      '<leader>un',
+      function()
+        Snacks.notifier.hide()
+      end,
+      desc = 'dismiss all [n]otifications',
+    },
+    {
+      '<leader>gB',
+      function()
+        Snacks.gitbrowse()
+      end,
+      desc = '[g]it [B]rowse',
+      mode = { 'n', 'v' },
+    },
+    {
+      '<leader>gb',
+      function()
+        Snacks.git.blame_line()
+      end,
+      desc = '[g]it [b]lame line',
+    },
+  },
+  init = function()
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'VeryLazy',
+      callback = function()
+        -- Setup some globals for debugging (lazy-loaded)
+        _G.dd = function(...)
+          Snacks.debug.inspect(...)
         end
-        local p = progress[client.id]
-
-        for i = 1, #p + 1 do
-          if i == #p + 1 or p[i].token == ev.data.params.token then
-            p[i] = {
-              token = ev.data.params.token,
-              msg = ('[%3d%%] %s%s'):format(
-                value.kind == 'end' and 100 or value.percentage or 100,
-                value.title or '',
-                value.message and (' **%s**'):format(value.message) or ''
-              ),
-              done = value.kind == 'end',
-            }
-            break
-          end
+        _G.bt = function()
+          Snacks.debug.backtrace()
         end
-
-        local msg = {} ---@type string[]
-        progress[client.id] = vim.tbl_filter(function(v)
-          return table.insert(msg, v.msg) or not v.done
-        end, p)
-
-        local spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' }
-        vim.notify(table.concat(msg, '\n'), 'info', {
-          id = 'lsp_progress',
-          title = client.name,
-          opts = function(notif)
-            notif.icon = #progress[client.id] == 0 and ' ' or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
-          end,
-        })
+        vim.print = _G.dd -- Override print to use snacks for `:=` command
       end,
     })
-
-    return opts
   end,
 }
