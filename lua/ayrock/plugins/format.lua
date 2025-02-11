@@ -5,6 +5,7 @@ local function biome_or_prettier(bufnr)
   })[1]
 
   if has_biome then
+    -- prefer biome lsp code formatting using lsp.buf.format()
     return {}
   end
 
@@ -26,12 +27,15 @@ local function biome_or_prettier(bufnr)
     return { 'prettier', 'prettierd' }
   end
 
-  return { 'biome' }
+  -- no formatter by default
+  -- optional: use 'biome' here to format using biome on system
+  return {}
 end
 
 return {
   'stevearc/conform.nvim',
-  lazy = false,
+  event = { 'BufWritePre' },
+  cmd = { 'ConformInfo' },
   keys = {
     {
       '<leader>f',
