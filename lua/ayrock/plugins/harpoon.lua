@@ -26,15 +26,15 @@ return {
       }):find()
     end
 
-    vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end, { desc = "Harpoon this shit" })
+    vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end, { desc = "[A]dd file to Harpoon" })
 
     -- use telescope to open harpoon list
-    vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end, { desc = "Explore Harpoons" })
+    vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end, { desc = "[E]xplore Harpoons" })
 
-    vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end, { desc = "Goto Harpoon one" })
-    vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end, { desc = "Goto Harpoon two" })
-    vim.keymap.set("n", "<C-n>", function() harpoon:list():select(3) end, { desc = "Goto Harpoon three" })
-    vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end, { desc = "Goto Harpoon four" })
+    vim.keymap.set("n", "<C-1>", function() harpoon:list():select(1) end, { desc = "Goto Harpoon [1]" })
+    vim.keymap.set("n", "<C-2>", function() harpoon:list():select(2) end, { desc = "Goto Harpoon [2]" })
+    vim.keymap.set("n", "<C-3>", function() harpoon:list():select(3) end, { desc = "Goto Harpoon [3]" })
+    vim.keymap.set("n", "<C-4>", function() harpoon:list():select(4) end, { desc = "Goto Harpoon [4]" })
 
     -- Toggle previous & next buffers stored within Harpoon list
     vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end, { desc = "Goto [P]revious Harpoon" })
