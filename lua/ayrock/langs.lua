@@ -37,7 +37,7 @@ return {
     rust_analyzer = {},
     tsserver = {},
     html = {},
-    htmx = {},
+    -- htmx = {},
     dockerls = {}, -- Dockerfile
     jsonls = {},
     yamlls = {},
