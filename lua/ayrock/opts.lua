@@ -5,7 +5,9 @@
 vim.o.hlsearch = false
 
 -- Make line numbers default
-vim.wo.number = true
+-- vim.wo.number = true
+vim.o.nu = true
+vim.o.rnu = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -27,6 +29,12 @@ vim.o.smartcase = true
 
 -- Keep signcolumn on by default
 vim.wo.signcolumn = 'yes'
+
+-- Always keep 8 lines above/below cursor unless at start/end of file
+vim.opt.scrolloff = 8
+
+-- Place a column line
+vim.opt.colorcolumn = "80"
 
 -- Decrease update time
 vim.o.updatetime = 250
