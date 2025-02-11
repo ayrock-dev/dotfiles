@@ -1,3 +1,34 @@
+local function biome_or_prettier(bufnr)
+  local has_biome = vim.lsp.get_clients({
+    bufnr = bufnr,
+    name = 'biome',
+  })[1]
+
+  if has_biome then
+    return {}
+  end
+
+  local has_prettier = vim.fs.find({
+    -- https://prettier.io/docs/en/configuration.html
+    '.prettierrc',
+    '.prettierrc.json',
+    '.prettierrc.yml',
+    '.prettierrc.yaml',
+    '.prettierrc.json5',
+    '.prettierrc.js',
+    '.prettierrc.cjs',
+    '.prettierrc.toml',
+    'prettier.config.js',
+    'prettier.config.cjs',
+  }, { upward = true })[1]
+
+  if has_prettier then
+    return { 'prettier', 'prettierd' }
+  end
+
+  return { 'biome' }
+end
+
 return {
   'stevearc/conform.nvim',
   lazy = false,
@@ -22,14 +53,14 @@ return {
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      javascript = { 'prettierd', 'prettier' },
-      typescript = { 'prettierd', 'prettier' },
-      javascriptreact = { 'prettierd', 'prettier' },
-      typescriptreact = { 'prettierd', 'prettier' },
-      html = { 'prettierd', 'prettier' },
-      json = { 'prettierd', 'prettier' },
-      jsonc = { 'prettierd', 'prettier' },
-      graphql = { 'prettierd', 'prettier' },
+      javascript = biome_or_prettier,
+      typescript = biome_or_prettier,
+      javascriptreact = biome_or_prettier,
+      typescriptreact = biome_or_prettier,
+      html = biome_or_prettier,
+      json = biome_or_prettier,
+      jsonc = biome_or_prettier,
+      graphql = biome_or_prettier,
     },
   },
 }

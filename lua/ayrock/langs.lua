@@ -45,10 +45,10 @@ return {
     eslint = {},
     sqlls = {},
     tailwindcss = {},
-    -- htmx = {},
     dockerls = {},
     jsonls = {},
     yamlls = {},
     taplo = {},
+    biome = {},
   },
 }
