@@ -1,10 +1,11 @@
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
-    { 'williamboman/mason.nvim', config = true },
+    { 'williamboman/mason.nvim', opts = {} },
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-    { 'folke/neodev.nvim', opts = {} },
+
+    'hrsh7th/cmp-nvim-lsp',
   },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -13,15 +14,11 @@ return {
         local map = function(keys, func, desc)
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
-        -- Execute a code action, usually your cursor needs to be on top of an error
-        -- or a suggestion from your LSP for this to activate.
-        map('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction')
 
-        -- Opens a popup that displays documentation about the word under your cursor
+        map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+        map('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction')
         --  See `:help K` for why this keymap.
         map('K', vim.lsp.buf.hover, '[K] Hover Documentation')
-
-        --  For example, in C this would take you to the header.
         map('gD', vim.lsp.buf.declaration, '[g]oto [D]eclaration')
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
