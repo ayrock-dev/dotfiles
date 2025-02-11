@@ -1,12 +1,13 @@
 local function biome_or_prettier(bufnr)
-  local has_biome = vim.lsp.get_clients({
-    bufnr = bufnr,
-    name = 'biome',
-  })[1]
+  local has_biome = vim.fs.find({
+    -- https://biomejs.dev/guides/configure-biome
+    'biome.json',
+    'biome.jsonc',
+  }, { upward = true })[1]
 
   if has_biome then
-    -- prefer biome lsp code formatting using lsp.buf.format()
-    return {}
+    -- use biome on system
+    return { 'biome' }
   end
 
   local has_prettier = vim.fs.find({
@@ -24,11 +25,11 @@ local function biome_or_prettier(bufnr)
   }, { upward = true })[1]
 
   if has_prettier then
+    -- use prettier on system
     return { 'prettier', 'prettierd' }
   end
 
-  -- no formatter by default
-  -- optional: use 'biome' here to format using biome on system
+  -- use biome lsp
   return {}
 end
 
@@ -47,8 +48,7 @@ return {
     },
   },
   opts = {
-    stop_after_first = true,
-    notify_on_error = false,
+    notify_on_error = true,
     format_on_save = function(bufnr)
       return {
         timeout_ms = 500,
