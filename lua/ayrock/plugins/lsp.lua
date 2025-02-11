@@ -6,7 +6,7 @@ return {
     { 'williamboman/mason.nvim', config = true },
     'williamboman/mason-lspconfig.nvim',
 
-    -- Useful status updates for LSP
+    -- Toasts with status updates from the LSP
     { 'j-hui/fidget.nvim', opts = {} },
 
     -- Additional lua configuration, makes nvim stuff amazing!
@@ -75,9 +75,9 @@ return {
       -- clangd = {},
       -- gopls = {},
       -- pyright = {},
-      -- rust_analyzer = {},
-      -- tsserver = {},
-      -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+      rust_analyzer = {},
+      tsserver = {},
+      html = {},
 
       lua_ls = {
         Lua = {
@@ -97,11 +97,11 @@ return {
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
     -- Ensure the servers above are installed
-    local mason_lspconfig = require 'mason-lspconfig'
+    local mason_lspconfig = require('mason-lspconfig')
 
-    mason_lspconfig.setup {
+    mason_lspconfig.setup({
       ensure_installed = vim.tbl_keys(servers),
-    }
+    })
 
     mason_lspconfig.setup_handlers {
       function(server_name)

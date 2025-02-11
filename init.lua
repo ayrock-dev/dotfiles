@@ -20,12 +20,13 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   {
-    "folke/tokyonight.nvim",
+    "baliestri/aura-theme",
     lazy = false,
     priority = 1000,
-    config = function()
-      vim.cmd.colorscheme('tokyonight')
-    end,
+    config = function(plugin)
+      vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
+      vim.cmd.colorscheme('aura-dark')
+    end
   },
 
   require 'kickstart.plugins.autoformat',
