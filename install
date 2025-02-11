@@ -4,15 +4,21 @@
 if ! command -v brew &> /dev/null; then
     echo "Installing Homebrew..."
     curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+
+    if [[ $(uname) == "Darwin" ]]; then
+        # TODO: source brew to shell env for osx
+    else
+        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    fi
 else
     echo "Homebrew is already installed"
 fi
+
 
 # Brewfile
 if [ -f "Brewfile" ]; then
     echo "Installing packages from Brewfile..."
 
-    # only install casks on osx, not in a linux env
     if [[ $(uname) == "Darwin" ]]; then
         brew bundle
     else
