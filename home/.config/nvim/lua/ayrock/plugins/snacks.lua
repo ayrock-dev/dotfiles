@@ -10,10 +10,10 @@ return {
         keys = {
           { icon = ' ', key = 's', desc = 'Restore Session', section = 'session' },
           { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
-          { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
-          { icon = ' ', key = 'g', desc = 'Find Text', action = ":lua Snacks.dashboard.pick('live_grep')" },
-          { icon = ' ', key = 'r', desc = 'Recent Files', action = ":lua Snacks.dashboard.pick('oldfiles')" },
-          { icon = ' ', key = 'c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+          { icon = ' ', key = 'f', desc = 'Find File', action = ':lua Snacks.picker.files()' },
+          { icon = ' ', key = 'g', desc = 'Find Text', action = ':lua Snacks.picker.grep()' },
+          { icon = ' ', key = 'r', desc = 'Recent', action = ':lua Snacks.picker.recent()' },
+          { icon = ' ', key = 'c', desc = 'Neovim Config', action = ":lua Snacks.picker.files({cwd = vim.fn.stdpath('config')})" },
           { icon = ' ', key = 'M', desc = 'Mason', action = ':Mason' },
           { icon = '󰒲 ', key = 'L', desc = 'Lazy Plugins', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
           { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
@@ -30,6 +30,7 @@ return {
     indent = { enabled = true },
     input = { enabled = true },
     notifier = { enabled = true },
+    picker = { enabled = true },
     scroll = { enabled = true },
   },
   keys = {
@@ -75,6 +76,91 @@ return {
         Snacks.git.blame_line()
       end,
       desc = '[g]it [b]lame line',
+    },
+    {
+      '<leader><leader>',
+      function()
+        Snacks.picker.buffers()
+      end,
+      desc = 'buffers',
+    },
+    {
+      '<leader>sg',
+      function()
+        Snacks.picker.grep()
+      end,
+      desc = '[s]earch [g]rep',
+    },
+    {
+      '<leader>sf',
+      function()
+        Snacks.picker.files()
+      end,
+      desc = '[s]earch [f]iles',
+    },
+    {
+      '<leader>:',
+      function()
+        Snacks.picker.command_history()
+      end,
+      desc = 'command history',
+    },
+    {
+      '<leader>s.',
+      function()
+        Snacks.picker.recent()
+      end,
+      desc = '[s]earch recent [.]',
+    },
+    {
+      '<leader>sw',
+      function()
+        Snacks.picker.grep_word()
+      end,
+      desc = '[s]earch [w]ord',
+      mode = { 'n', 'x' },
+    },
+    {
+      '<leader>sd',
+      function()
+        Snacks.picker.diagnostics()
+      end,
+      desc = '[s]earch [d]iagnostics',
+    },
+    {
+      '<leader>sm',
+      function()
+        Snacks.picker.marks()
+      end,
+      desc = '[s]earch [b]arks',
+    },
+    {
+      '<leader>sq',
+      function()
+        Snacks.picker.qflist()
+      end,
+      desc = '[s]earch [q]uickfixes',
+    },
+    {
+      '<leader>ss',
+      function()
+        Snacks.picker.lsp_symbols()
+      end,
+      desc = '[s]earch LSP [s]ymbols',
+    },
+    {
+      '<leader>gc',
+      function()
+        Snacks.picker.git_log()
+      end,
+      desc = '[g]it log [c]',
+    },
+    {
+      '<leader>gs',
+      function()
+        Snacks.picker.git_status()
+      end,
+      desc = '[g]it [s]tatus',
     },
   },
   init = function()
