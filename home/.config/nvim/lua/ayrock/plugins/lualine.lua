@@ -55,6 +55,15 @@ return {
               end
             end,
           },
+          {
+            function()
+              if not package.loaded['supermaven-nvim.api'] then
+                return 'Supermaven not loaded.'
+              end
+              local api = require('supermaven-nvim.api')
+              return api.is_running() and 'Supermaven running.' or 'Supermaven stopped.'
+            end,
+          },
         },
         lualine_y = {
           'encoding',

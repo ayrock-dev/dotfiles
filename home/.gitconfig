@@ -1,0 +1,5 @@
+[user]
+    email = eric.lee@discordapp.com
+    name = Eric Lee
+[core]
+	excludesfile = /Users/eric.lee/.gitignore
