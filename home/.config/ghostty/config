@@ -18,24 +18,23 @@ font-size = 14
 # black
 palette = 0=#110f18
 palette = 8=#4d4d4d
-
 # red
 palette = 1=#ff6767
-palette = 9=#ffca85
+palette = 9=#ff6767
 # green
 palette = 2=#61ffca
-palette = 10=#a277ff
+palette = 10=#61ffca
 # yellow
 palette = 3=#ffca85
 palette = 11=#ffca85
 # blue
-palette = 4=#61ffca
+palette = 4=#a277ff
 palette = 12=#a277ff
-# purple
+# magenta
 palette = 5=#a277ff
 palette = 13=#a277ff
-# aqua
-palette = 6=#edecee
+# cyan
+palette = 6=#61ffca
 palette = 14=#61ffca
 # white
 palette = 7=#edecee
