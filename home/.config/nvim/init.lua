@@ -41,47 +41,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   {
-    'catppuccin/nvim',
-    name = 'catppuccin',
+    'baliestri/aura-theme',
     lazy = false,
     priority = 1000,
-    opts = {
-      flavour = 'mocha', -- latte, frappe, macchiato, mocha
-      fidget = true,
-      gitsigns = true,
-      indent_blankline = {
-        enabled = true,
-        scope_color = '', -- catppuccin color (eg. `lavender`) Default: text
-        colored_indent_levels = false,
-      },
-      mason = true,
-      cmp = true,
-      native_lsp = {
-        enabled = true,
-        virtual_text = {
-          errors = { 'italic' },
-          hints = { 'italic' },
-          warnings = { 'italic' },
-          information = { 'italic' },
-        },
-        underlines = {
-          errors = { 'underline' },
-          hints = { 'underline' },
-          warnings = { 'underline' },
-          information = { 'underline' },
-        },
-        inlay_hints = {
-          background = true,
-        },
-      },
-      telescope = {
-        enabled = true,
-      },
-      lsp_trouble = true,
-      which_key = true,
-    },
-    config = function()
-      vim.cmd.colorscheme('catppuccin')
+    config = function(plugin)
+      vim.opt.rtp:append(plugin.dir .. '/packages/neovim')
+      vim.cmd('colorscheme aura-dark')
     end,
   },
 
