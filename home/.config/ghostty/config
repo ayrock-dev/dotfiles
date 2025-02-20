@@ -1,6 +1,6 @@
 # The syntax is "key = value". The whitespace around the equals doesn't matter.
-background = 1E1E2E
-foreground = CDD6F4
+background = 15141b
+foreground = edecee
 
 # Blank lines are ignored!
 
@@ -16,29 +16,30 @@ font-size = 14
 # being defined as regular and bold.
 #
 # black
-palette = 0=#45475A
-palette = 8=#585B70
+palette = 0=#110f18
+palette = 8=#4d4d4d
+
 # red
-palette = 1=#F38BA8
-palette = 9=#F38BA8
+palette = 1=#ff6767
+palette = 9=#ffca85
 # green
-palette = 2=#A6E3A1
-palette = 10=#A6E3A1
+palette = 2=#61ffca
+palette = 10=#a277ff
 # yellow
-palette = 3=#F9E2AF
-palette = 11=#F9E2AF
+palette = 3=#ffca85
+palette = 11=#ffca85
 # blue
-palette = 4=#89B4FA
-palette = 12=#89B4FA
+palette = 4=#61ffca
+palette = 12=#a277ff
 # purple
-palette = 5=#F5C2E7
-palette = 13=#F5C2E7
+palette = 5=#a277ff
+palette = 13=#a277ff
 # aqua
-palette = 6=#94E2D5
-palette = 14=#94E2D5
+palette = 6=#edecee
+palette = 14=#61ffca
 # white
-palette = 7=#BAC2DE
-palette = 15=#A6ADC8
+palette = 7=#edecee
+palette = 15=#edecee
 
 window-height = 54
 window-width = 180

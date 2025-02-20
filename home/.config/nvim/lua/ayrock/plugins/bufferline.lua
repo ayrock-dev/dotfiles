@@ -6,8 +6,6 @@ return {
     local bufferline = require('bufferline')
     local icons = require('ayrock/icons')
     bufferline.setup({
-      highlights = require('catppuccin.groups.integrations.bufferline').get(),
-
       options = {
         diagnostics = 'nvim_lsp',
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
