@@ -6,16 +6,26 @@ return {
 
     vim.o.laststatus = vim.g.lualine_laststatus
 
+    local theme = {
+      normal = {
+        a = { fg = vim.g.terminal_color_0, bg = vim.g.terminal_color_6, gui = 'bold' },
+        b = { fg = vim.g.terminal_color_0, bg = vim.g.terminal_color_5, gui = 'bold' },
+        c = { fg = vim.g.termina_color_7, bg = vim.g.terminal_color_0 },
+      },
+      insert = { a = { fg = vim.g.terminal_color_0, bg = vim.g.terminal_color_3, gui = 'bold' } },
+      visual = { a = { fg = vim.g.terminal_color_0, bg = vim.g.terminal_color_3, gui = 'bold' } },
+      replace = { a = { fg = vim.g.terminal_color_7, bg = vim.g.terminal_color_1, gui = 'bold' } },
+    }
+
     local opts = {
       options = {
-        theme = 'auto',
         globalstatus = true,
-        disabled_filetypes = { statusline = { 'dashboard', 'alpha', 'starter' } },
+        disabled_filetypes = { statusline = { 'snacks_dashboard' } },
+        theme = theme,
       },
       sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch' },
-
         lualine_c = {
           {
             'filename',
