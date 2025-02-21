@@ -4,6 +4,17 @@ return {
   opts = function()
     local icons = require('ayrock/icons')
 
+    local trouble = require('trouble')
+    local trouble_symbols = trouble.statusline
+      and trouble.statusline({
+        mode = 'symbols',
+        groups = {},
+        title = false,
+        filter = { range = true },
+        format = '{kind_icon}{symbol.name:Normal}',
+        hl_group = 'lualine_c_normal',
+      })
+
     vim.o.laststatus = vim.g.lualine_laststatus
 
     local theme = {
@@ -45,6 +56,10 @@ return {
               hint = icons.diagnostics.hint,
             },
           },
+          {
+            trouble_symbols and trouble_symbols.get,
+            cond = trouble_symbols and trouble_symbols.has,
+          },
         },
         lualine_x = {
           {
@@ -85,21 +100,6 @@ return {
         },
       },
     }
-
-    local trouble = require('trouble')
-    local symbols = trouble.statusline
-      and trouble.statusline({
-        mode = 'symbols',
-        groups = {},
-        title = false,
-        filter = { range = true },
-        format = '{kind_icon}{symbol.name:Normal}',
-        hl_group = 'lualine_c_normal',
-      })
-    table.insert(opts.sections.lualine_c, {
-      symbols and symbols.get,
-      cond = symbols and symbols.has,
-    })
 
     return opts
   end,
