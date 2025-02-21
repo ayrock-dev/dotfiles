@@ -19,9 +19,9 @@ return {
         ['<C-Space>'] = cmp.mapping.complete({}),
       }),
       sources = {
+        { name = 'supermaven' },
         { name = 'nvim_lsp' },
         { name = 'path' },
-        { name = 'supermaven' },
       },
     })
   end,
