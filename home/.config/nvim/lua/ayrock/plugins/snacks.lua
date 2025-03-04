@@ -25,12 +25,25 @@ return {
         { section = 'startup' },
       },
     },
+    explorer = {
+      enabled = true,
+      replace_netrw = true,
+    },
     git = { enabled = true },
     gitbrowse = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
     notifier = { enabled = true },
-    picker = { enabled = true },
+    picker = {
+      enabled = true,
+      hidden = true,
+      sources = {
+        explorer = {
+          layout = { layout = { position = 'right' } },
+          auto_close = true,
+        },
+      },
+    },
     scroll = { enabled = true },
   },
   keys = {
@@ -196,7 +209,32 @@ return {
       function()
         Snacks.explorer()
       end,
-      desc = '[e]xplorer',
+      desc = 'File explorer (cwd)',
+    },
+    {
+      '<leader>-',
+      function()
+        Snacks.explorer()
+      end,
+      desc = 'File explorer (cwd)',
+    },
+    {
+      '<leader>E',
+      function()
+        Snacks.explorer({
+          follow_file = false,
+        })
+      end,
+      desc = 'File explorer (root)',
+    },
+    {
+      '<leader>_',
+      function()
+        Snacks.explorer({
+          follow_file = false,
+        })
+      end,
+      desc = 'File explorer (root)',
     },
   },
   init = function()
