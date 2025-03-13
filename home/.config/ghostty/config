@@ -1,44 +1,28 @@
-# The syntax is "key = value". The whitespace around the equals doesn't matter.
-background = 15141b
-foreground = edecee
-
-# Blank lines are ignored!
-
-# keybind = ctrl+z=close_surface
-# keybind = ctrl+d=new_split:right
-
-# Empty values reset the configuration to the default value
-
 font-family = BerkeleyMono Nerd Font
 font-size = 14
 
-# Colors can be changed by setting the 16 colors of `palette`, which each color
-# being defined as regular and bold.
-#
-# black
-palette = 0=#110f18
-palette = 8=#4d4d4d
-# red
-palette = 1=#ff6767
-palette = 9=#ff6767
-# green
-palette = 2=#61ffca
-palette = 10=#61ffca
-# yellow
-palette = 3=#ffca85
-palette = 11=#ffca85
-# blue
-palette = 4=#a277ff
-palette = 12=#a277ff
-# magenta
-palette = 5=#a277ff
-palette = 13=#a277ff
-# cyan
-palette = 6=#61ffca
-palette = 14=#61ffca
-# white
-palette = 7=#edecee
-palette = 15=#edecee
+palette = 0=#15161e
+palette = 1=#f7768e
+palette = 2=#9ece6a
+palette = 3=#e0af68
+palette = 4=#7aa2f7
+palette = 5=#bb9af7
+palette = 6=#7dcfff
+palette = 7=#a9b1d6
+palette = 8=#414868
+palette = 9=#ff899d
+palette = 10=#9fe044
+palette = 11=#faba4a
+palette = 12=#8db0ff
+palette = 13=#c7a9ff
+palette = 14=#a4daff
+palette = 15=#c0caf5
+
+background = #1a1b26
+foreground = #c0caf5
+cursor-color = #c0caf5
+selection-background = #283457
+selection-foreground = #c0caf5
 
 window-height = 54
 window-width = 180

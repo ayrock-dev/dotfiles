@@ -41,12 +41,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   {
-    'baliestri/aura-theme',
+    'folke/tokyonight.nvim',
     lazy = false,
     priority = 1000,
-    config = function(plugin)
-      vim.opt.rtp:append(plugin.dir .. '/packages/neovim')
-      vim.cmd('colorscheme aura-dark')
+    config = function()
+      vim.cmd('colorscheme tokyonight-night')
     end,
   },
 
