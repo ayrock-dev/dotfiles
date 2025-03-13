@@ -37,6 +37,10 @@ return {
     picker = {
       enabled = true,
       hidden = true,
+      matcher = {
+        cwd_bonus = true,
+        frecency = true,
+      },
       sources = {
         explorer = {
           layout = { layout = { position = 'right' } },
@@ -91,11 +95,32 @@ return {
       desc = '[g]it [b]lame line',
     },
     {
+      '<leader>gl',
+      function()
+        Snacks.git.blame_line()
+      end,
+      desc = '[g]it [l]og',
+    },
+    {
+      '<leader>gL',
+      function()
+        Snacks.git.blame_line()
+      end,
+      desc = '[g]it [L]og line',
+    },
+    {
       '<leader><leader>',
       function()
         Snacks.picker.buffers()
       end,
-      desc = 'buffers',
+      desc = '[s]earch [b]uffers',
+    },
+    {
+      '<leader>sb',
+      function()
+        Snacks.picker.grep_buffers()
+      end,
+      desc = '[s]earch [b]uffers',
     },
     {
       '<leader>sg',
