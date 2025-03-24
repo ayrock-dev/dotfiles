@@ -52,7 +52,16 @@ return {
     html = {},
     prismals = {},
     pyright = {}, -- python lsp by microsoft
-    eslint = {},
+    eslint = {
+      server_capabilities = {
+        documentFormattingProvider = true,
+        codeActionOnSave = {
+          enable = true,
+          mode = 'all',
+        },
+        format = true,
+      },
+    },
     sqlls = {},
     tailwindcss = {},
     dockerls = {},
