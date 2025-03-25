@@ -49,8 +49,6 @@ require('lazy').setup({
     end,
   },
 
-  require('kickstart.plugins.autoformat'),
-
   { import = 'ayrock.plugins' },
 }, {})
 
