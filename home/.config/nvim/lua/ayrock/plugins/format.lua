@@ -29,7 +29,6 @@ local function biome_or_prettier(bufnr)
     return { 'prettier', 'prettierd' }
   end
 
-  -- use lsp
   return {}
 end
 
@@ -41,20 +40,18 @@ return {
     {
       '<leader>f',
       function()
-        require('conform').format({ async = true, lsp_fallback = true })
+        require('conform').format({ async = true })
       end,
-      mode = '',
       desc = '[f]ormat buffer',
     },
   },
   opts = {
     notify_on_error = true,
-    format_on_save = function(bufnr)
-      return {
-        timeout_ms = 500,
-        lsp_fallback = true,
-      }
-    end,
+    format_on_save = { -- These options will be passed to conform.format()
+      timeout_ms = 500,
+      -- Use cli formatters (i.e. stylua, prettier) then LSP formatting last (i.e. eslint, biome, rust, go)
+      lsp_format = 'last',
+    },
     formatters_by_ft = {
       lua = { 'stylua' },
       javascript = biome_or_prettier,
