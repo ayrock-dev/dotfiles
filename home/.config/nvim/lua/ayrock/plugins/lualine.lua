@@ -6,14 +6,14 @@ return {
 
     local trouble = require('trouble')
     local trouble_symbols = trouble.statusline
-      and trouble.statusline({
-        mode = 'symbols',
-        groups = {},
-        title = false,
-        filter = { range = true },
-        format = '{kind_icon}{symbol.name:Normal}',
-        hl_group = 'lualine_c_normal',
-      })
+        and trouble.statusline({
+          mode = 'symbols',
+          groups = {},
+          title = false,
+          filter = { range = true },
+          format = '{kind_icon}{symbol.name:Normal}',
+          hl_group = 'lualine_c_normal',
+        })
 
     vim.o.laststatus = vim.g.lualine_laststatus
 
@@ -75,7 +75,7 @@ return {
                 return 'Supermaven not loaded.'
               end
               local api = require('supermaven-nvim.api')
-              return api.is_running() and 'Supermaven running.' or 'Supermaven stopped.'
+              return api.is_running() and '󰘧 ' or '󰘧 '
             end,
           },
         },
@@ -84,7 +84,7 @@ return {
           'filetype',
         },
         lualine_z = {
-          { 'progress', separator = ' ', padding = { left = 1, right = 0 } },
+          { 'progress', separator = ' ',                  padding = { left = 1, right = 0 } },
           { 'location', padding = { left = 0, right = 1 } },
         },
       },
