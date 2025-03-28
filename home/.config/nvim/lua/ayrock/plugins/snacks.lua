@@ -262,6 +262,21 @@ return {
       end,
       desc = 'File explorer (root)',
     },
+
+    {
+      '<leader>bd',
+      function()
+        Snacks.bufdelete()
+      end,
+      desc = 'Delete Buffer',
+    },
+    {
+      '<leader>bo',
+      function()
+        Snacks.bufdelete.other()
+      end,
+      desc = 'Delete Other Buffers',
+    },
   },
   init = function()
     vim.api.nvim_create_autocmd('User', {
