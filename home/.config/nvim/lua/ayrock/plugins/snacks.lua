@@ -49,6 +49,7 @@ return {
       },
     },
     scroll = { enabled = true },
+    words = { enabled = true },
   },
   keys = {
     {
