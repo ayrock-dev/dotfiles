@@ -3,3 +3,5 @@
     name = Eric Lee
 [core]
 	excludesfile = /Users/eric.lee/.gitignore
+[pull]
+	rebase = true
