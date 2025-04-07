@@ -75,7 +75,7 @@ return {
                 return 'Supermaven not loaded.'
               end
               local api = require('supermaven-nvim.api')
-              return api.is_running() and '󰘧 ' or '󰘧 '
+              return api.is_running() and '󰘧 ' or '󰘧 '
             end,
           },
         },
