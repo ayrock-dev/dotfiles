@@ -20,12 +20,32 @@ return {
         },
       },
     },
+    event = 'InsertEnter',
+
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
     opts = {
-      keymap = { preset = 'super-tab' },
+      keymap = {
+        preset = 'super-tab',
+        ['<C-y>'] = { 'select_and_accept' },
+      },
       completion = {
-        ghost_text = { enabled = true },
+        accept = {
+          auto_brackets = {
+            enabled = true,
+          },
+        },
+        menu = {
+          draw = {
+            treesitter = { 'lsp' },
+          },
+        },
         trigger = {
           show_on_keyword = true,
+        },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 200,
         },
       },
       sources = {
@@ -46,6 +66,7 @@ return {
           },
         },
       },
+
       fuzzy = { implementation = 'prefer_rust_with_warning' },
     },
   },
