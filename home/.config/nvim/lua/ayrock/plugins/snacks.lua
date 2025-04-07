@@ -60,13 +60,6 @@ return {
       desc = '[n]otification history',
     },
     {
-      '<leader>bd',
-      function()
-        Snacks.bufdelete()
-      end,
-      desc = 'delete buffer',
-    },
-    {
       '<leader>cR',
       function()
         Snacks.rename.rename_file()
