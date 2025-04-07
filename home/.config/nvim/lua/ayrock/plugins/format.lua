@@ -40,7 +40,7 @@ return {
     {
       '<leader>f',
       function()
-        require('conform').format({ async = true })
+        require('conform').format({ async = true, lsp_format = 'first' })
       end,
       desc = '[f]ormat buffer',
     },
@@ -50,7 +50,7 @@ return {
     format_on_save = { -- These options will be passed to conform.format()
       timeout_ms = 500,
       -- Use cli formatters (i.e. stylua, prettier) then LSP formatting last (i.e. eslint, biome, rust, go)
-      lsp_format = 'last',
+      lsp_format = 'first',
     },
     formatters_by_ft = {
       lua = { 'stylua' },
