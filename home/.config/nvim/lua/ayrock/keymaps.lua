@@ -10,6 +10,10 @@ vim.keymap.set({ 'n', 'i' }, '<right>', '<Nop>')
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- buffers
+vim.keymap.set('n', '<leader>bn', '<Cmd>bn<CR>', { desc = 'buffer [n]ext' })
+vim.keymap.set('n', '<leader>bp', '<Cmd>bp<CR>', { desc = 'buffer [p]revious' })
+
 -- [[ Remaps from bautistaaa ]]
 vim.keymap.set('n', '<leader>x', '<Cmd>bd<CR>', { desc = '[x] close current buffer' })
 vim.keymap.set('n', '<leader>xx', '<Cmd>%bd<CR>', { desc = '[xx] close all buffers' })
