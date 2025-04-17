@@ -12,13 +12,13 @@ $directory\
 $git_branch\
 $git_status\
 [](fg:bright-black bg:black)\
+[ ](fg:white bg:black)\
 $nodejs\
 $bun\
 $rust\
 $python\
 $lua\
 $zig\
-[](fg:black bg:black)\
 $time\
 [](fg:black)\
 $line_break$character"""
@@ -99,7 +99,7 @@ format = '[ $symbol $branch ]($style)'
 style = 'fg:bright-blue bg:bright-black'
 
 [git_status]
-format = '[$ahead_behind ]($style)'
+format = '[$ahead_behind]($style)'
 style = 'fg:bright-blue bg:bright-black'
 ahead = '⇡${count}'
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
@@ -107,37 +107,44 @@ behind = '⇣${count}'
 
 [bun]
 symbol = "🍞 "
+format = '[$symbol$version ]($style)'
 style = "bg:black"
 
 [elixir]
 symbol = "💧 "
+format = '[$symbol$version ]($style)'
 style = "bg:black"
 
 [lua]
 symbol = " "
+format = '[$symbol$version ]($style)'
 style = "bg:black"
 
 [nodejs]
 symbol = "󰋘 "
+format = '[$symbol$version ]($style)'
 style = "bg:black"
 
 [python]
 symbol = " "
+format = '[$symbol$version ]($style)'
 style = "bg:black"
 
 [rust]
 symbol = "🦀 "
+format = '[$symbol$version ]($style)'
 style = "bg:black"
 
 [zig]
 symbol = " "
+format = '[$symbol$version ]($style)'
 style = "bg:black"
 
 [time]
 disabled = false
 use_12hr = true
 time_format = "%I:%M %p"
-format = '[  $time ]($style)'
+format = '[ $time ]($style)'
 style = 'bg:black fg:white'
 
 [line_break]
