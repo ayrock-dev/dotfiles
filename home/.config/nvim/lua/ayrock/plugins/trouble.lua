@@ -26,6 +26,10 @@ return {
       desc = 'next [d]iagnostic',
     },
   },
+  config = function(_, opts)
+    vim.diagnostic.config({ virtual_text = true })
+    require('trouble').setup(opts)
+  end,
   specs = {
     'folke/snacks.nvim',
     opts = function(_, opts)
