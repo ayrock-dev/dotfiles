@@ -10,6 +10,8 @@ source <(fzf --zsh)
 
 alias vim='nvim'
 alias code='nvim'
+alias ls="ls --color=auto -al"
+alias lg="lazygit"
 
 # starship
 eval "$(starship init zsh)"
