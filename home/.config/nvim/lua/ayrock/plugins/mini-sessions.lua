@@ -1,3 +1,3 @@
 return {
-  { 'echasnovski/mini.sessions', version = '*', lazy = false },
+  { 'echasnovski/mini.sessions', version = false, lazy = false },
 }
