@@ -138,7 +138,14 @@ return {
       desc = 'command history',
     },
     {
-      '<leader>s.',
+      '<leader>sr',
+      function()
+        Snacks.picker.recent()
+      end,
+      desc = '[s]earch [r]ecent',
+    },
+    {
+      '<leader>s.', -- duplicate while i build muscle memory for sr instead of s.
       function()
         Snacks.picker.recent()
       end,
