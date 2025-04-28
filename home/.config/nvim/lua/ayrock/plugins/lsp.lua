@@ -9,14 +9,21 @@ return {
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
+        -- TODO: find a way to do this in 'ayrock/langs'
+        if event.data.client_id == 'elixirls' then
+          vim.lsp.config('elixirls', {
+            cmd = { 'elixir-ls' }, -- 'elixir-ls' must be in path and on-system, for example via Brew
+          })
+        end
+
         local map = function(keys, func, desc)
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
-        map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+        map('<leader>rn', vim.lsp.buf.rename, '[r]e[n]ame')
         map('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction')
         --  See `:help K` for why this keymap.
-        map('K', vim.lsp.buf.hover, '[K] Hover Documentation')
+        map('K', vim.lsp.buf.hover, '[K] Show Documentation')
         map('gD', vim.lsp.buf.declaration, '[g]oto [D]eclaration')
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -56,16 +63,16 @@ return {
     require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    ---capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
     capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+
     require('mason-lspconfig').setup({
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
-          -- This handles overriding only values explicitly passed
-          -- by the server configuration above. Useful when disabling
-          -- certain features of an LSP (for example, turning off formatting for tsserver)
+
+          -- Overriding only values explicitly passed from server configuration in 'ayrock/langs.lua'
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+
           require('lspconfig')[server_name].setup(server)
         end,
       },
