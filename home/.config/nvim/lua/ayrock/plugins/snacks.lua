@@ -36,7 +36,6 @@ return {
     notifier = { enabled = true },
     picker = {
       enabled = true,
-      hidden = true,
       matcher = {
         cwd_bonus = true,
         frecency = true,
