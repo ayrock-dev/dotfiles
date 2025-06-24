@@ -1,6 +1,7 @@
 cask "ghostty"
 tap "dashlane/tap"
 tap "weihanglo/sfz", "https://github.com/weihanglo/sfz.git"
+brew "sst/tap/opencode"
 brew "coreutils"
 brew "fzf"
 brew "httpie"
