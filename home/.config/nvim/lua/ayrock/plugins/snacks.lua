@@ -46,6 +46,9 @@ return {
           auto_close = true,
         },
       },
+      files = {
+        cmd = 'rg',
+      },
     },
     scroll = { enabled = true },
     words = { enabled = true },
