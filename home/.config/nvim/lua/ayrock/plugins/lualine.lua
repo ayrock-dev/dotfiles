@@ -53,10 +53,6 @@ return {
               hint = icons.diagnostics.hint,
             },
           },
-          {
-            trouble_symbols and trouble_symbols.get,
-            cond = trouble_symbols and trouble_symbols.has,
-          },
         },
         lualine_x = {
           {
