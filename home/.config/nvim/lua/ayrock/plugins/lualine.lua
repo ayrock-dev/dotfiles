@@ -28,13 +28,11 @@ return {
         lualine_b = { 'branch' },
         lualine_c = {
           {
-            'filename',
-            symbols = {
-              modified = '',
-              readonly = '',
-              unnamed = '',
-              newfile = '[New]',
-            },
+            -- 0: Just the filename
+            path = 1, -- 1: Relative path
+            -- 2: Absolute path
+            -- 3: Absolute path, with tilde as the home directory
+            -- 4: Filename and parent dir, with tilde as the home directory
           },
           {
             'diagnostics',
@@ -84,7 +82,7 @@ return {
           'filetype',
         },
         lualine_z = {
-          { 'progress', separator = ' ',                  padding = { left = 1, right = 0 } },
+          { 'progress', separator = ' ', padding = { left = 1, right = 0 } },
           { 'location', padding = { left = 0, right = 1 } },
         },
       },
