@@ -48,7 +48,7 @@ return {
   opts = {
     notify_on_error = true,
     format_on_save = { -- These options will be passed to conform.format()
-      timeout_ms = 500,
+      timeout_ms = 1500,
       -- Use cli formatters (i.e. stylua, prettier) then LSP formatting last (i.e. eslint, biome, rust, go)
       lsp_format = 'first',
     },
