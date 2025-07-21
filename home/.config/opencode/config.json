@@ -3,5 +3,18 @@
 	"model": "anthropic/claude-sonnet-4-20250514",
 	"keybinds": {
 		"leader": "space"
-	}
+	},
+	"mcp": {
+		"Notion": {
+			"type": "local",
+			"command": [
+				"npx",
+				"-y",
+				"mcp-remote",
+				"https://mcp.notion.com/mcp"
+			],
+			"enabled": true
+		}
+	},
+	"theme": "system"
 }
