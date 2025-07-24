@@ -1,4 +1,4 @@
-local function biome_or_prettier(bufnr)
+local function biome_or_prettier(_bufnr)
   local has_biome = vim.fs.find({
     -- https://biomejs.dev/guides/configure-biome
     'biome.json',
@@ -64,4 +64,25 @@ return {
       graphql = biome_or_prettier,
     },
   },
+  init = function(_)
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      pattern = '*',
+      callback = function()
+        local conform = require('conform')
+        local formatters = conform.list_formatters()
+
+        for _, formatter in ipairs(formatters) do
+          if formatter.name == 'biome' then
+            vim.lsp.buf.code_action({
+              filter = function(action)
+                return action.kind == 'source.fixAll.biome' or action.kind == 'source.organizeImports.biome'
+              end,
+              apply = true,
+            })
+            break
+          end
+        end
+      end,
+    })
+  end,
 }
