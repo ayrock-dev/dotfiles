@@ -4,17 +4,6 @@ return {
   opts = function()
     local icons = require('ayrock/icons')
 
-    local trouble = require('trouble')
-    local trouble_symbols = trouble.statusline
-      and trouble.statusline({
-        mode = 'symbols',
-        groups = {},
-        title = false,
-        filter = { range = true },
-        format = '{kind_icon}{symbol.name:Normal}',
-        hl_group = 'lualine_c_normal',
-      })
-
     vim.o.laststatus = vim.g.lualine_laststatus
 
     local opts = {
