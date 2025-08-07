@@ -81,7 +81,7 @@ format = '[ on $ssh_symbol$hostname]($style)'
 style = 'bg:blue fg:black'
 
 [directory]
-format = '[ $path ]($style)'
+format = '[ $path ]($style)[$read_only]($read_only_style)'
 style = 'bg:bright-blue fg:black'
 truncation_length = 3
 truncation_symbol = "…/"
@@ -92,6 +92,7 @@ truncation_symbol = "…/"
 "Music" = "󰝚 "
 "Pictures" = " "
 "dev" = "󰲋 "
+"discord" = " "
 
 [git_branch]
 symbol = ""
