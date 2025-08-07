@@ -5,6 +5,16 @@
 		"leader": "space"
 	},
 	"mcp": {
+		"asana": {
+			"type": "local",
+			"command": [
+				"npx",
+				"-y",
+				"mcp-remote",
+				"https://mcp.asana.com/sse"
+			],
+			"enabled": true
+		},
 		"Notion": {
 			"type": "local",
 			"command": [
