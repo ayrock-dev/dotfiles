@@ -28,6 +28,7 @@ return {
     explorer = {
       enabled = true,
       replace_netrw = true,
+      hidden = true,
     },
     git = { enabled = true },
     gitbrowse = { enabled = true },
@@ -44,10 +45,15 @@ return {
         explorer = {
           layout = { layout = { position = 'right' } },
           auto_close = true,
+          hidden = true,
+        },
+        files = {
+          hidden = true,
         },
       },
       files = {
         cmd = 'rg',
+        hidden = true,
       },
     },
     scroll = { enabled = true },
