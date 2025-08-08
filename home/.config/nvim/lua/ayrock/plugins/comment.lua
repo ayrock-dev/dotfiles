@@ -8,17 +8,29 @@ return {
     --
     -- TODO: should not match
     -- TODO(ayrock-dev): should match
+    -- TODO(ayrock-dev) should match
     -- TODO (ayrock-dev): should match
     -- TODO (ayrock-dev) should match
-    -- TODO(ayrock-dev) should match
     -- FIX: should not match
     -- FIXME: should not match
     -- FIX(ericlee): should match
     -- FIX(eric.lee): should match
+    -- FIXME(elee): should match
     -- FIXME (ericlee): should match
     -- FIXME (eric.lee): should match
-    search = { pattern = [[\b(KEYWORDS)\s?\((ayrock-dev|ayrock|ericlee|eric\.lee)\)]] },
-    highlight = { pattern = [[.*<((KEYWORDS)\s?\((ayrock-dev|ayrock|ericlee|eric\.lee)\))]] },
+    -- FIXME (elee): should match
+    search = {
+      -- search uses ripgrep regex (for example, meaning \b for word boundaries )
+      pattern = [[\b(KEYWORDS)\s?\((ayrock-dev|ayrock|ericlee|eric\.lee|elee)\)\b]],
+    },
+    highlight = {
+      -- highlight group uses vim regex (for example, meaning < for word boundaries )
+      pattern = [[.*<((KEYWORDS)\s?\((ayrock-dev|ayrock|ericlee|eric\.lee|elee)\):?)]],
+    },
+    gui_style = {
+      fg = 'NONE', -- The gui style to use for the fg highlight group.
+      bg = 'NONE', -- The gui style to use for the bg highlight group.
+    },
   },
   keys = {
     {
