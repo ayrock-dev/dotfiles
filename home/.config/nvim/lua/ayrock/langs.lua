@@ -33,7 +33,7 @@ return {
     'yaml',
   },
   -- language servers
-  -- See: https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
+  -- See: https://github.com/mason-org/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
   servers = {
     lua_ls = {
       Lua = {
