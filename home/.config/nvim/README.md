@@ -7,8 +7,16 @@ some edits
 > ⚠️ Backup your previous configuration (if any exists)
 #### Requirements
 
+### `ripgrep`
+
 ```sh
 brew install ripgrep
+```
+
+### `fd-find`
+
+```sh
+brew install fd
 ```
 
 Neovim's configurations are located at `~/.config/nvim`. To clone `ayrock-nvim` to this folder, use the following.
