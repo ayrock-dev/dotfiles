@@ -9,13 +9,6 @@ return {
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
-        -- TODO(ayrock-dev): find a way to do this in 'ayrock/langs'
-        if event.data.client_id == 'elixirls' then
-          vim.lsp.config('elixirls', {
-            cmd = { 'elixir-ls' }, -- 'elixir-ls' must be in path and on-system, for example via Brew
-          })
-        end
-
         local map = function(keys, func, desc)
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
