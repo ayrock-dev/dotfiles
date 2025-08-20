@@ -43,7 +43,7 @@ return {
     },
     rust_analyzer = {},
     ts_ls = {
-      server_capabilities = {
+      capabilities = {
         documentFormattingProvider = false,
       },
     },
@@ -53,7 +53,7 @@ return {
     prismals = {},
     pyright = {}, -- python lsp by microsoft
     eslint = {
-      server_capabilities = {
+      capabilities = {
         documentFormattingProvider = true,
         codeActionOnSave = {
           enable = true,
@@ -66,14 +66,14 @@ return {
     tailwindcss = {},
     dockerls = {},
     jsonls = {
-      server_capabilities = {
+      capabilities = {
         documentFormattingProvider = false,
       },
     },
     yamlls = {},
     taplo = {},
     biome = {
-      server_capabilities = {
+      capabilities = {
         documentFormattingProvider = false,
       },
     },
