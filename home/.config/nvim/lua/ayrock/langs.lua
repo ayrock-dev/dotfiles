@@ -72,6 +72,10 @@ return {
     },
     yamlls = {},
     taplo = {},
-    biome = {},
+    biome = {
+      server_capabilities = {
+        documentFormattingProvider = false,
+      },
+    },
   },
 }
