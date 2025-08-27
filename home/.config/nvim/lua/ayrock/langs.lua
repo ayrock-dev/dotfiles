@@ -35,6 +35,11 @@ return {
   -- language servers
   -- See: https://github.com/mason-org/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
   servers = {
+    --example == {
+    -- cmd = { ... },
+    -- filetypes = { ... },
+    -- capabilities = {},
+    --}
     lua_ls = {
       Lua = {
         workspace = { checkThirdParty = false },
@@ -47,7 +52,9 @@ return {
         documentFormattingProvider = false,
       },
     },
-    elixirls = {},
+    elixirls = {
+      cmd = { 'elixir-ls' }, -- 'elixir-ls' must be in path and on-system, for example via Brew
+    },
     graphql = {},
     html = {},
     prismals = {},
