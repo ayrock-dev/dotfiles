@@ -80,7 +80,7 @@ return {
     yamlls = {},
     taplo = {},
     biome = {
-      capabilities = {
+      server_capabilities = {
         documentFormattingProvider = false,
       },
     },
