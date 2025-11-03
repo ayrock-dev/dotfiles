@@ -176,6 +176,13 @@ return {
       desc = '[s]earch [d]iagnostics',
     },
     {
+      '<leader>sD',
+      function()
+        Snacks.picker.diagnostics_buffer()
+      end,
+      desc = '[s]earch buffer [D]iagnostics',
+    },
+    {
       '<leader>sm',
       function()
         Snacks.picker.marks()
