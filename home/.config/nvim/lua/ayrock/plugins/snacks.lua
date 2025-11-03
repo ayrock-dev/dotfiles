@@ -1,6 +1,7 @@
 return {
   'folke/snacks.nvim',
   priority = 1000,
+  -- not lazy so dashboard can highjack netrw on start
   lazy = false,
   opts = {
     bigfile = { enabled = true },
