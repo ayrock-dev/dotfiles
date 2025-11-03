@@ -15,13 +15,13 @@ return {
 
         map('grn', vim.lsp.buf.rename, 'goto rename')
         map('gra', vim.lsp.buf.code_action, 'goto code action')
-        map('grr', vim.lsp.buf.code_action, 'goto references')
-        map('gri', vim.lsp.buf.declaration, 'goto implementation')
+        map('grr', vim.lsp.buf.references, 'goto references')
+        map('gri', vim.lsp.buf.implementation, 'goto implementation')
         map('grd', vim.lsp.buf.declaration, 'goto declaration')
-        map('grD', vim.lsp.buf.declaration, 'goto declaration')
-        map('gO', vim.lsp.buf.declaration, 'goto document symbols')
-        map('gW', vim.lsp.buf.declaration, 'goto workspace symbols')
-        map('grt', vim.lsp.buf.declaration, 'goto type definition')
+        map('grD', vim.lsp.buf.definition, 'goto definition')
+        map('gO', vim.lsp.buf.document_symbol, 'goto document symbols')
+        map('gW', vim.lsp.buf.workspace_symbol, 'goto workspace symbols')
+        map('grt', vim.lsp.buf.type_definition, 'goto type definition')
 
         --  See `:help K` for why this keymap.
         map('K', vim.lsp.buf.hover, 'show documentation')

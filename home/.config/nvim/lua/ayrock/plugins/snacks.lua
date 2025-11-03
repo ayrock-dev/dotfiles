@@ -101,14 +101,14 @@ return {
     {
       '<leader>gl',
       function()
-        Snacks.git.blame_line()
+        Snacks.git.log()
       end,
       desc = '[g]it [l]og',
     },
     {
       '<leader>gL',
       function()
-        Snacks.git.blame_line()
+        Snacks.git.log_line()
       end,
       desc = '[g]it [L]og line',
     },
