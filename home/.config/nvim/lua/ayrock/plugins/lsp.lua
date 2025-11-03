@@ -13,12 +13,18 @@ return {
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
-        map('<leader>rn', vim.lsp.buf.rename, '[r]e[n]ame')
-        map('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction')
+        map('grn', vim.lsp.buf.rename, 'goto rename')
+        map('gra', vim.lsp.buf.code_action, 'goto code action')
+        map('grr', vim.lsp.buf.code_action, 'goto references')
+        map('gri', vim.lsp.buf.declaration, 'goto implementation')
+        map('grd', vim.lsp.buf.declaration, 'goto declaration')
+        map('grD', vim.lsp.buf.declaration, 'goto declaration')
+        map('gO', vim.lsp.buf.declaration, 'goto document symbols')
+        map('gW', vim.lsp.buf.declaration, 'goto workspace symbols')
+        map('grt', vim.lsp.buf.declaration, 'goto type definition')
 
         --  See `:help K` for why this keymap.
-        map('K', vim.lsp.buf.hover, '[K] Show Documentation')
-        map('gD', vim.lsp.buf.declaration, '[g]oto [D]eclaration')
+        map('K', vim.lsp.buf.hover, 'show documentation')
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
 
