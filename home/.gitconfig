@@ -5,3 +5,5 @@
 	excludesfile = /Users/eric.lee/.gitignore
 [pull]
 	rebase = true
+[rerere]
+	enabled = true
