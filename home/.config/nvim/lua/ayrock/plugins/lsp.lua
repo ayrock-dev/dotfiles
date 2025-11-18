@@ -24,7 +24,12 @@ return {
         map('grt', vim.lsp.buf.type_definition, 'goto type definition')
 
         --  See `:help K` for why this keymap.
-        map('K', vim.lsp.buf.hover, 'show documentation')
+        map('K', function()
+          vim.lsp.buf.hover({ border = 'rounded' })
+        end, 'show documentation')
+        map('<C-k>', function()
+          vim.lsp.buf.signature_help({ border = 'rounded' })
+        end, 'show documentation')
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
 
