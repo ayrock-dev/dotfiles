@@ -1,28 +1,16 @@
 {
 	"$schema": "https://opencode.ai/config.json",
 	"model": "anthropic/claude-sonnet-4-5-20250929",
-	"keybinds": {
-		"leader": "space"
-	},
+	"keybinds": {},
 	"mcp": {
 		"asana": {
 			"type": "local",
-			"command": [
-				"npx",
-				"-y",
-				"mcp-remote",
-				"https://mcp.asana.com/sse"
-			],
+			"command": ["npx", "-y", "mcp-remote", "https://mcp.asana.com/sse"],
 			"enabled": true
 		},
 		"Notion": {
 			"type": "local",
-			"command": [
-				"npx",
-				"-y",
-				"mcp-remote",
-				"https://mcp.notion.com/mcp"
-			],
+			"command": ["npx", "-y", "mcp-remote", "https://mcp.notion.com/mcp"],
 			"enabled": true
 		}
 	},
