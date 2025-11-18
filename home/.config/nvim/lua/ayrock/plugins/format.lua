@@ -1,4 +1,4 @@
-local biome_or_prettier = { 'biome', 'prettier', stop_after_first = true }
+local biome_or_prettier = { 'biome', 'prettier', stop_after_first = true, lsp_format = 'fallback' }
 
 return {
   'stevearc/conform.nvim',
@@ -8,7 +8,7 @@ return {
     {
       '<leader>f',
       function()
-        require('conform').format({ async = true, lsp_format = 'first' })
+        require('conform').format({ async = true })
       end,
       desc = '[f]ormat buffer',
     },
@@ -22,11 +22,13 @@ return {
         args = { 'check', '--write', '--stdin-file-path', '$FILENAME' },
       },
     },
-    format_on_save = { -- These options will be passed to conform.format()
-      timeout_ms = 1500,
+    -- These options will be passed to conform.format()
+    default_format_opts = {
       -- Use LSP formatting first -> cli formatters last
       lsp_format = 'first',
     },
+    -- These options will be passed to conform.format()
+    format_on_save = { timeout_ms = 1500 },
     formatters_by_ft = {
       lua = { 'stylua' },
       javascript = biome_or_prettier,
