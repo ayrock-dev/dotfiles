@@ -3,6 +3,7 @@
     name = Eric Lee
 [core]
 	excludesfile = /Users/eric.lee/.gitignore
+	editor = nvim
 [pull]
 	rebase = true
 [rerere]
