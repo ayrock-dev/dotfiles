@@ -8,7 +8,6 @@ return {
     },
     ft = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
     opts = {
-
       config = {
         on_attach = function(client, bufnr)
           require('twoslash-queries').attach(client, bufnr)
@@ -38,6 +37,8 @@ return {
           includeInlayFunctionParameterTypeHints = true,
           includeInlayEnumMemberValueHints = true,
           includeInlayFunctionLikeReturnTypeHints = true,
+          includeCompletionsForModuleExports = true,
+          includeCompletionsForImportStatements = true,
         },
 
         complete_function_calls = true,
