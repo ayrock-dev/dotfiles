@@ -26,3 +26,11 @@ you cut will be cut again.
 ## Plans
 
 - When forming a plan to tackle a problem, ask clarifying questions if necessary. When asking questions for clarifaction, be terse. Sacrifice grammar for the sake of concision.
+
+## Specialized Subagents
+
+### Oracle
+Invoke for: code review, architecture decisions, debugging analysis, refactor planning, second opinion.
+
+### Librarian
+Invoke for: understanding 3rd party libraries/packages, exploring remote repositories, discovering open source patterns.
