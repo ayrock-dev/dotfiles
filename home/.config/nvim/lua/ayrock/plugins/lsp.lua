@@ -9,6 +9,9 @@ return {
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
+        local bufnr = event.buf
+        local bufname = vim.api.nvim_buf_get_name(bufnr)
+
         local map = function(keys, func, desc)
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
@@ -55,6 +58,14 @@ return {
               vim.api.nvim_clear_autocmds({ group = 'kickstart-lsp-highlight', buffer = event2.buf })
             end,
           })
+        end
+
+        -- Detach from non-file buffers
+        if bufname == '' or bufname:match('^diffview://') or bufname:match('^fugitive://') then
+          vim.schedule(function()
+            vim.lsp.buf_detach_client(bufnr, event.data.client_id)
+          end)
+          return
         end
       end,
     })
