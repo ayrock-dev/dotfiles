@@ -1,22 +1,21 @@
 #!/bin/bash
+set -e
 
-# zsh
-if [[ $(uname) != "Darwin" ]]; then
-    if ! command -v zsh &> /dev/null; then
+command_exists() { command -v "$1" &>/dev/null; }
+is_macos() { [[ $(uname) == "Darwin" ]]; }
+
+# zsh (Linux only)
+if ! is_macos; then
+    if ! command_exists zsh; then
         echo "Installing zsh..."
-        sudo apt update
-        sudo apt install -y zsh
-
-        if [ ! -f "~/.zshrc" ]; then
-            touch ~/.zshrc
-        fi
+        sudo apt update && sudo apt install -y zsh
+        [[ ! -f ~/.zshrc ]] && touch ~/.zshrc
     else
         echo "zsh is already installed"
     fi
-    if [[ $SHELL != $(which zsh) ]]; then
+    if [[ $SHELL != "$(which zsh)" ]]; then
         echo "Setting zsh as default shell..."
-        chsh -s $(which zsh)
-
+        chsh -s "$(which zsh)"
         echo "Please log out and log back in for the shell change to take effect."
         exit 1
     else
@@ -25,28 +24,27 @@ if [[ $(uname) != "Darwin" ]]; then
 fi
 
 # Homebrew
-if ! command -v brew &> /dev/null; then
+if ! command_exists brew; then
     echo "Installing Homebrew..."
     curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 
-
-    if [ ! -f "~/.zprofile" ]; then
-        touch ~/.zprofile
-    fi
-
-    if [[ $(uname) == "Darwin" ]]; then
-        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
-        eval "$(/opt/homebrew/bin/brew shellenv)"
+    if is_macos; then
+        BREW_PREFIX="/opt/homebrew"
     else
-        echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.zprofile
-        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+        BREW_PREFIX="/home/linuxbrew/.linuxbrew"
     fi
+
+    [[ ! -f ~/.zprofile ]] && touch ~/.zprofile
+
+    SHELLENV_LINE='eval "$('${BREW_PREFIX}'/bin/brew shellenv)"'
+    grep -qF "$BREW_PREFIX" ~/.zprofile || echo "$SHELLENV_LINE" >> ~/.zprofile
+    eval "$($BREW_PREFIX/bin/brew shellenv)"
 else
     echo "Homebrew is already installed"
 fi
 
 # Brewfile
-if [ -f "Brewfile" ]; then
+if [[ -f "Brewfile" ]]; then
     echo "Installing packages from Brewfile..."
     brew bundle
 else
@@ -56,24 +54,25 @@ fi
 # Stow
 stow -R -v -t ~ -d ./home .
 
-source ~/.zshrc
-
-# Votla
-if ! command -v volta &> /dev/null; then
+# Volta
+if ! command_exists volta; then
     echo "Installing Volta..."
     curl https://get.volta.sh | bash
 else
     echo "Volta is already installed"
 fi
 
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 # Node
-if ! command -v node &> /dev/null; then
+if ! command_exists node; then
     echo "Installing node..."
     volta install node
 fi
 
 # pnpm
-if ! command -v pnpm &> /dev/null; then
+if ! command_exists pnpm; then
     echo "Installing pnpm..."
     volta install pnpm
 fi
