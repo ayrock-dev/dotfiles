@@ -25,5 +25,17 @@ cursor-color = #c0caf5
 selection-background = #283457
 selection-foreground = #c0caf5
 
+auto-update-channel = tip
+
+clipboard-read = allow
+clipboard-write = allow
+
+window-colorspace = display-p3
 window-height = 54
 window-width = 180
+window-padding-color = background
+window-padding-balance = true
+window-padding-x = 0
+window-padding-y = 0
+
+mouse-scroll-multiplier = 0.4
