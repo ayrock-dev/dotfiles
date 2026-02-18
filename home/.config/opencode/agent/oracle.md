@@ -1,7 +1,7 @@
 ---
-description: Senior engineering advisor for code reviews, architecture decisions, complex debugging, and planning. Invoke when you need deeper analysis before acting — reviews, trade-offs, debugging race conditions, planning refactors. Prompt with precise problem + files. Ask for concrete outcomes.
+description: Engineering advisor for code reviews, architecture decisions, complex debugging, and planning. Invoke when you need deeper analysis before acting — reviews, trade-offs, debugging race conditions, planning refactors. Prompt with precise problem + files. Ask for concrete outcomes.
 mode: subagent
-model: anthropic/claude-opus-4-5
+model: anthropic/claude-opus-4-6
 # Extended thinking - maxed out for deepest reasoning
 options:
   thinking:
@@ -14,6 +14,7 @@ permission:
   grep: allow
   glob: allow
   webfetch: allow
+  grep_app_searchGitHub: allow
   lsp: allow
 ---
 
@@ -74,8 +75,10 @@ Brief outline only if relevant and trade-offs are significant.
 
 ## Tool Usage
 
-You have read-only access: read, grep, glob, LSP, webfetch.
-Use them freely to verify assumptions and gather context. Your extended thinking enables deep analysis - leverage it fully.
+You have read-only access: read, grep, glob, LSP, webfetch, grep_app.
+Use them freely to verify assumptions and gather context:
+  - **grep_app**: Search public GitHub repos for real-world usage patterns
+Your native reasoning enables deep analysis - leverage it fully.
 
 ## Guidelines
 
