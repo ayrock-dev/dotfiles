@@ -86,23 +86,7 @@ return {
     })
 
     local servers = require('ayrock/langs').servers
-    local ensure_installed = vim.tbl_keys(servers)
-    require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
-
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
-
-    require('mason-lspconfig').setup({
-      handlers = {
-        function(server_name)
-          local server = servers[server_name] or {}
-
-          -- Overriding only values explicitly passed from server configuration in 'ayrock/langs.lua'
-          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-
-          require('lspconfig')[server_name].setup(server)
-        end,
-      },
-    })
+    require('mason-tool-installer').setup({ ensure_installed = servers })
+    require('mason-lspconfig').setup({ ensure_installed = servers })
   end,
 }
