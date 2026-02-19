@@ -37,9 +37,11 @@ return {
     'pyright',
     'eslint',
     'sqlls',
+    'tailwindcss',
     'dockerls',
     'jsonls',
     'yamlls',
     'taplo',
+    'biome',
   },
 }
