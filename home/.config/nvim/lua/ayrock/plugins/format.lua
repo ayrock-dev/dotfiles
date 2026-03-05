@@ -1,5 +1,3 @@
-local biome_or_prettier = { 'biome', 'prettier', stop_after_first = true, lsp_format = 'fallback' }
-
 return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
@@ -31,14 +29,14 @@ return {
     format_on_save = { timeout_ms = 1500 },
     formatters_by_ft = {
       lua = { 'stylua' },
-      javascript = biome_or_prettier,
-      typescript = biome_or_prettier,
-      javascriptreact = biome_or_prettier,
-      typescriptreact = biome_or_prettier,
-      html = biome_or_prettier,
-      json = biome_or_prettier,
-      jsonc = biome_or_prettier,
-      graphql = biome_or_prettier,
+      javascript = { 'prettier' },
+      typescript = { 'prettier' },
+      javascriptreact = { 'prettier' },
+      typescriptreact = { 'prettier' },
+      html = { 'prettier' },
+      json = { 'prettier' },
+      jsonc = { 'prettier' },
+      graphql = { 'prettier' },
     },
   },
 }

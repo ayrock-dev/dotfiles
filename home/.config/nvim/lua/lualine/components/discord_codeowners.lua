@@ -1,4 +1,4 @@
-local M = {}
+local M = require('lualine.component'):extend()
 
 local yaml_cache = {}
 local owner_cache = {}
@@ -49,7 +49,7 @@ end
 
 --- @param path string A filepath
 --- @return string|nil owner The codeowners name for this filepath
-function M.codeowners(path)
+local function codeowners(path)
   if not path or path == '' then
     return nil
   end
@@ -63,6 +63,7 @@ function M.codeowners(path)
     path = dir,
     upward = true,
     type = 'file',
+    limit = math.huge,
   })
 
   for _, owners_path in ipairs(owners_files) do
@@ -85,9 +86,13 @@ function M.codeowners(path)
   return nil
 end
 
-function M.invalidate()
-  owner_cache = {}
-  yaml_cache = {}
+function M:init(options)
+  M.super.init(self, options)
+end
+
+function M:update_status()
+  local owner = codeowners(vim.api.nvim_buf_get_name(0))
+  return owner and string.format('󰡉 %s', owner) or ''
 end
 
 return M
