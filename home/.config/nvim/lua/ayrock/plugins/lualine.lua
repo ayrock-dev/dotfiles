@@ -73,6 +73,13 @@ return {
           },
         },
         lualine_y = {
+          {
+            function()
+              local path = vim.api.nvim_buf_get_name(0)
+              local owner = require('ayrock.discord-codeowners').codeowners(path)
+              return owner and string.format('󰡉 %s', owner) or ''
+            end,
+          },
           'encoding',
           'filetype',
         },

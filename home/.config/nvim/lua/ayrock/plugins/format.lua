@@ -24,7 +24,7 @@ return {
     },
     -- These options will be passed to conform.format()
     default_format_opts = {
-      -- CLI formatters first -> LSP formatters as fallback
+      -- conform formatters first -> LSP formatters as fallback
       lsp_format = 'fallback',
     },
     -- These options will be passed to conform.format()
