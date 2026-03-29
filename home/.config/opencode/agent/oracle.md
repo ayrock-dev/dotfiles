@@ -3,10 +3,7 @@ description: Engineering advisor for code reviews, architecture decisions, compl
 mode: subagent
 model: anthropic/claude-opus-4-6
 # Extended thinking - maxed out for deepest reasoning
-options:
-  thinking:
-    type: enabled
-    budgetTokens: 31999
+reasoningEffort: max
 # Strict read-only permissions (mirrors Amp's allowMcp:false, allowToolbox:false)
 permission:
   "*": deny
