@@ -32,3 +32,5 @@ vim.o.inccommand = 'split'
 vim.o.cursorline = true
 
 vim.o.scrolloff = 10
+
+vim.o.exrc = true
