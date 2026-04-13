@@ -28,20 +28,49 @@ return {
   -- language servers (per-server config lives in after/lsp/*.lua)
   -- See: https://github.com/mason-org/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
   servers = {
-    'lua_ls',
-    'rust_analyzer',
-    'elixirls',
-    'graphql',
-    'html',
-    'prismals',
-    'pyright',
-    'eslint',
-    'sqlls',
-    'tailwindcss',
-    'dockerls',
-    'jsonls',
-    'yamlls',
-    'taplo',
-    'biome',
+    --example = {
+    -- cmd = { ... },
+    -- filetypes = { ... },
+    -- capabilities = {},
+    --}
+    lua_ls = {
+      Lua = {
+        workspace = { checkThirdParty = false },
+        telemetry = { enable = false },
+      },
+    },
+    rust_analyzer = {},
+    elixirls = {
+      cmd = { 'elixir-ls' }, -- 'elixir-ls' must be in path and on-system, for example via Brew
+    },
+    graphql = {},
+    html = {},
+    prismals = {},
+    pyright = {}, -- python lsp by microsoft
+    eslint = {
+      capabilities = {
+        documentFormattingProvider = true,
+        codeActionOnSave = {
+          enable = true,
+          mode = 'all',
+        },
+        format = true,
+      },
+    },
+    sqlls = {},
+    tailwindcss = {},
+    dockerls = {},
+    jsonls = {
+      capabilities = {
+        documentFormattingProvider = false,
+      },
+    },
+    yamlls = {},
+    taplo = {},
+    biome = {
+      server_capabilities = {
+        documentFormattingProvider = false,
+      },
+    },
   },
 }
