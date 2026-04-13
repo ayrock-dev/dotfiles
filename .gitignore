@@ -1,4 +1,5 @@
 .DS_Store
+.nvim.lua
 Session.vim
 home/.secrets
 opencode.json
