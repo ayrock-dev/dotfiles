@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "anthropic/claude-opus-4-6",
+  "model": "cloudflare-ai-gateway/anthropic/claude-opus-4-7",
   "autoupdate": true,
   "mcp": {},
   "permission": {
@@ -95,7 +95,7 @@
     "cloudflare-ai-gateway": {
       "models": {
         "anthropic/claude-sonnet-4-6": {},
-        "anthropic/claude-opus-4-6": {}
+        "anthropic/claude-opus-4-7": {}
       }
     }
   }
