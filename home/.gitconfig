@@ -1,6 +1,6 @@
 [user]
-    email = eric.lee@discordapp.com
-    name = Eric Lee
+    email = ayrocklee@gmail.com
+    name = ayrock-dev
 [core]
 	excludesfile = ~/.gitignore
 	editor = nvim

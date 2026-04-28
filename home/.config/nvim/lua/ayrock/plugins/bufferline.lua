@@ -1,10 +1,10 @@
 return {
   'akinsho/bufferline.nvim',
+  event = 'VeryLazy',
   dependencies = 'nvim-tree/nvim-web-devicons',
-  after = 'catppuccin',
   config = function()
     local bufferline = require('bufferline')
-    local icons = require('ayrock/icons')
+    local icons = require('ayrock.icons')
     bufferline.setup({
       options = {
         diagnostics = 'nvim_lsp',

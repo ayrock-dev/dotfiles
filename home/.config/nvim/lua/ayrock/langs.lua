@@ -1,6 +1,8 @@
+-- Treesitter parsers to install + enable highlighting for.
+-- LSP servers are NOT listed here; they self-register by virtue of having
+-- a config file at `after/lsp/<name>.lua`. See `lua/ayrock/plugins/lsp.lua`.
 return {
-  -- treesitter syntax highlighting
-  -- See: https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#supported-languages
+  -- See: https://github.com/nvim-treesitter/nvim-treesitter (main branch) for supported langs
   treesitter_langs = {
     'bash',
     'diff',
@@ -24,24 +26,5 @@ return {
     'vim',
     'vimdoc',
     'yaml',
-  },
-  -- language servers (per-server config lives in after/lsp/*.lua)
-  -- See: https://github.com/mason-org/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
-  servers = {
-    'lua_ls',
-    'rust_analyzer',
-    'elixirls',
-    'graphql',
-    'html',
-    'prismals',
-    'pyright',
-    'eslint',
-    'sqlls',
-    'tailwindcss',
-    'dockerls',
-    'jsonls',
-    'yamlls',
-    'taplo',
-    'biome',
   },
 }

@@ -198,13 +198,6 @@ return {
       desc = '[s]earch [q]uickfixes',
     },
     {
-      '<leader>ss',
-      function()
-        Snacks.picker.lsp_symbols()
-      end,
-      desc = '[s]earch LSP [s]ymbols',
-    },
-    {
       '<leader>gc',
       function()
         Snacks.picker.git_log()

@@ -1,7 +1,7 @@
 ---@type vim.lsp.Config
 return {
   cmd = function(dispatchers, config)
-    local cmd = 'vscode-json-language-server'
+    local cmd = 'vscode-html-language-server'
     if (config or {}).root_dir then
       local local_cmd = vim.fs.joinpath(config.root_dir, 'node_modules/.bin', cmd)
       if vim.fn.executable(local_cmd) == 1 then
@@ -10,15 +10,12 @@ return {
     end
     return vim.lsp.rpc.start({ cmd, '--stdio' }, dispatchers)
   end,
-  filetypes = { 'json', 'jsonc' },
+  filetypes = { 'html' },
+  root_markers = { 'package.json', '.git' },
   init_options = {
     provideFormatter = true,
+    embeddedLanguages = { css = true, javascript = true },
+    configurationSection = { 'html', 'css', 'javascript' },
   },
-  root_markers = { '.git' },
-  on_init = function(client)
-    -- Disable formatting; use formatters for json rather than lsp.
-    if client.server_capabilities then
-      client.server_capabilities.documentFormattingProvider = false
-    end
-  end,
+  settings = {},
 }
