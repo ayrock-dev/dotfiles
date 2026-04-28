@@ -16,6 +16,7 @@ brew "stow"
 brew "stylua"
 brew "elixir-ls"
 brew "tree"
+brew "tree-sitter-cli"
 brew "dashlane/tap/dashlane-cli"
 
 cask "ghostty"

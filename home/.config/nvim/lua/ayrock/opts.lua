@@ -34,3 +34,6 @@ vim.o.cursorline = true
 vim.o.scrolloff = 10
 
 vim.o.exrc = true
+
+-- default border for floating windows (LSP hover, signature_help, etc.)
+vim.o.winborder = 'rounded'

@@ -1,7 +1,6 @@
 return {
   {
     'saghen/blink.cmp',
-    lazy = false,
     version = '1.*',
     event = 'InsertEnter',
 

@@ -2,7 +2,7 @@ return {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
   opts = function()
-    local icons = require('ayrock/icons')
+    local icons = require('ayrock.icons')
 
     vim.o.laststatus = vim.g.lualine_laststatus
 
