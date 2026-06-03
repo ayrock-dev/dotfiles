@@ -32,7 +32,7 @@
       "command": [
         "uv",
         "--directory",
-        "~/dev/discord/misc/users/ruby/discord-mobile-mcp",
+        "{env:HOME}/dev/discord/misc/users/ruby/discord-mobile-mcp",
         "run",
         "main.py"
       ]
