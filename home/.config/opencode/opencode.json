@@ -1,16 +1,40 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "cloudflare-ai-gateway/anthropic/claude-opus-4-7",
+  "model": "cloudflare-ai-gateway/anthropic/claude-opus-4-8",
   "autoupdate": true,
   "enabled_providers": ["cloudflare-ai-gateway"],
   "mcp": {
+    "asana": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "mcp-remote",
+        "https://mcp.asana.com/v2/mcp",
+        "3334",
+        "--static-oauth-client-info",
+        "{\"client_id\":\"{env:ASANA_CLIENT_ID}\",\"client_secret\":\"{env:ASANA_CLIENT_SECRET}\"}",
+        "--resource",
+        "https://mcp.asana.com/v2"
+      ]
+    },
     "bigquery": {
       "type": "local",
       "command": [
-        "~/tools/genai-toolbox/toolbox",
+        "{env:HOME}/tools/genai-toolbox/toolbox",
         "--prebuilt",
         "bigquery",
         "--stdio"
+      ]
+    },
+    "discord-mobile": {
+      "type": "local",
+      "command": [
+        "uv",
+        "--directory",
+        "~/dev/discord/misc/users/ruby/discord-mobile-mcp",
+        "run",
+        "main.py"
       ]
     }
   },
@@ -208,10 +232,24 @@
   },
   "provider": {
     "cloudflare-ai-gateway": {
-      "models": {
-        "anthropic/claude-sonnet-4-6": {},
-        "anthropic/claude-opus-4-7": {}
-      }
+      "whitelist": [
+        "anthropic/claude-3-5-haiku",
+        "anthropic/claude-3-haiku",
+        "anthropic/claude-3-opus",
+        "anthropic/claude-3-sonnet",
+        "anthropic/claude-3.5-haiku",
+        "anthropic/claude-3.5-sonnet",
+        "anthropic/claude-haiku-4-5",
+        "anthropic/claude-opus-4",
+        "anthropic/claude-opus-4-1",
+        "anthropic/claude-opus-4-5",
+        "anthropic/claude-opus-4-6",
+        "anthropic/claude-opus-4-7",
+        "anthropic/claude-opus-4-8",
+        "anthropic/claude-sonnet-4",
+        "anthropic/claude-sonnet-4-5",
+        "anthropic/claude-sonnet-4-6"
+      ]
     }
   }
 }
