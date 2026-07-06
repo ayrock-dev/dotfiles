@@ -1,0 +1,7 @@
+agent/*
+
+!agent/AGENTS.md
+!agent/settings.json
+!agent/mcp.json
+!agent/skills/
+!agent/skills/**
