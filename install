@@ -76,3 +76,4 @@ if ! command_exists pnpm; then
     echo "Installing pnpm..."
     volta install pnpm
 fi
+
