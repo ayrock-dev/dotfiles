@@ -5,3 +5,5 @@ agent/*
 !agent/mcp.json
 !agent/skills/
 !agent/skills/**
+!agent/extensions/
+!agent/extensions/**
