@@ -1,12 +1,18 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "cloudflare-ai-gateway/anthropic/claude-opus-4-8",
+  "model": "cloudflare-ai-gateway/anthropic/claude-opus-5",
   "autoupdate": false,
   "enabled_providers": ["cloudflare-ai-gateway"],
   "mcp": {
     "notion": {
       "type": "local",
       "command": ["npx", "-y", "mcp-remote", "https://mcp.notion.com/mcp"]
+    },
+    "exa": {
+      "type": "local",
+      "command": ["npx", "-y", "exa-mcp-server"],
+      "environment": { "EXA_API_KEY": "{env:EXA_API_KEY}" },
+      "enabled": true
     }
   },
   "permission": {

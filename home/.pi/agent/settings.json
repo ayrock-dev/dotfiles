@@ -2,13 +2,10 @@
   "lastChangelogVersion": "0.80.3",
   "theme": "dark",
   "defaultProvider": "cloudflare-ai-gateway",
-  "defaultModel": "claude-opus-4-8",
-  "enabledModels": [
-    "cloudflare-ai-gateway/claude-*"
-  ],
-  "packages": [
-    "npm:pi-mcp-adapter"
-  ],
+  "defaultModel": "claude-opus-5",
+  "enabledModels": ["cloudflare-ai-gateway/claude-*"],
+  "packages": ["npm:pi-mcp-adapter", "npm:pi-skill-toggle"],
   "editorPaddingX": 1,
-  "defaultThinkingLevel": "medium"
+  "defaultThinkingLevel": "xhigh",
+  "hideThinkingBlock": false
 }
