@@ -3,6 +3,12 @@
     "notion": {
       "url": "https://mcp.notion.com/mcp",
       "auth": "oauth"
+    },
+    "exa": {
+      "command": "npx",
+      "args": ["-y", "exa-mcp-server"],
+      "env": { "EXA_API_KEY": "${EXA_API_KEY}" },
+      "lifecycle": "lazy"
     }
   }
 }

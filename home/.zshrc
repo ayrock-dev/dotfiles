@@ -5,6 +5,9 @@ export EDITOR="nvim"
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_ENV_HINTS=1
 
+# volta
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 
 # fzf
 source <(fzf --zsh)

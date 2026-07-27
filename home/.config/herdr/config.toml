@@ -1,0 +1,58 @@
+# Herdr — terminal workspace/pane manager for pi sessions.
+# Stowed to ~/.config/herdr/config.toml.
+#
+# Validate edits:      herdr config check
+# Compare to defaults: herdr --default-config
+#
+# Only intentional deviations from the defaults live here; everything else
+# inherits herdr's built-in defaults (shell = $SHELL, ...).
+
+# Skip the first-run onboarding wizard.
+onboarding = false
+
+[theme]
+# Follow the host terminal's ANSI palette (ghostty's configured colors)
+# instead of a bundled theme.
+name = "terminal"
+
+[keys]
+# Prefix on Ctrl+; keeps Ctrl+b free for shells, editors, and tmux.
+prefix = "ctrl+semicolon"
+
+# Memorable splits: \ opens to the right, Enter opens below.
+split_vertical = "prefix+backslash"
+split_horizontal = "prefix+enter"
+
+# Jump straight to an agent pane by index.
+focus_agent = "prefix+alt+1..9"
+
+# Seamless Ctrl+h/j/k/l between Neovim splits and Herdr panes.
+# Requires the vim-herdr-navigation plugin (installed by ./install) and the
+# Neovim side in nvim/after/plugin/herdr-navigation.lua.
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "vim-herdr-navigation.left"
+description = "Navigate left (Vim/Herdr)"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "vim-herdr-navigation.down"
+description = "Navigate down (Vim/Herdr)"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "vim-herdr-navigation.up"
+description = "Navigate up (Vim/Herdr)"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "vim-herdr-navigation.right"
+description = "Navigate right (Vim/Herdr)"
+
+[ui.toast]
+# In-app toasts when a background agent finishes or needs input.
+delivery = "herdr"

@@ -1,0 +1,7 @@
+*.log
+session.json
+session-history.json
+release-notes.json
+plugins.json
+plugins/
+.plugins.lock
