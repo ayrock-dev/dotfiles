@@ -56,17 +56,10 @@ stow -R -v -t ~ -d ./home .
 
 # Herdr (terminal workspace manager for pi sessions)
 if command_exists herdr; then
-    if herdr plugin list --json 2>/dev/null | grep -q '"plugin_id":"vim-herdr-navigation"'; then
-        echo "herdr vim-herdr-navigation plugin already installed"
-    else
-        echo "Installing herdr vim-herdr-navigation plugin..."
-        herdr plugin install paulbkim-dev/vim-herdr-navigation -y
-    fi
-
     echo "Installing herdr pi integration..."
     herdr integration install pi
 else
-    echo "herdr not found; skipping herdr plugin/integration setup"
+    echo "herdr not found; skipping herdr integration setup"
 fi
 
 # Volta
