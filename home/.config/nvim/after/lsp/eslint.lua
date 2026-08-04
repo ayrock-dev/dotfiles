@@ -132,13 +132,13 @@ return {
   },
   handlers = {
     ['eslint/openDoc'] = function(_, result)
-      if result then
+      if result ~= nil and result ~= vim.NIL then
         vim.ui.open(result.url)
       end
       return {}
     end,
     ['eslint/confirmESLintExecution'] = function(_, result)
-      if not result then
+      if result == nil or result == vim.NIL then
         return
       end
       return 4 -- approved
@@ -166,7 +166,7 @@ return {
     end, {})
 
     vim.api.nvim_create_autocmd('BufWritePre', {
-      buffer = bufnr,
+      buf = bufnr,
       command = 'LspEslintFixAll',
     })
   end,

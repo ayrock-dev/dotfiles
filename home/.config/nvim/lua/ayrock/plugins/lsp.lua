@@ -22,7 +22,7 @@ return {
         local bufname = vim.api.nvim_buf_get_name(bufnr)
 
         local map = function(keys, func, desc)
-          vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+          vim.keymap.set('n', keys, func, { buf = event.buf, desc = 'LSP: ' .. desc })
         end
 
         -- Customizations / non-default mappings only.
@@ -53,13 +53,13 @@ return {
         if client and client:supports_method('textDocument/documentHighlight') then
           local highlight_augroup = vim.api.nvim_create_augroup('ayrock.lsp-highlight', { clear = false })
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-            buffer = event.buf,
+            buf = event.buf,
             group = highlight_augroup,
             callback = vim.lsp.buf.document_highlight,
           })
 
           vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-            buffer = event.buf,
+            buf = event.buf,
             group = highlight_augroup,
             callback = vim.lsp.buf.clear_references,
           })
@@ -68,7 +68,7 @@ return {
             group = vim.api.nvim_create_augroup('ayrock.lsp-detach', { clear = true }),
             callback = function(event2)
               vim.lsp.buf.clear_references()
-              vim.api.nvim_clear_autocmds({ group = 'ayrock.lsp-highlight', buffer = event2.buf })
+              vim.api.nvim_clear_autocmds({ group = 'ayrock.lsp-highlight', buf = event2.buf })
             end,
           })
         end
@@ -100,6 +100,7 @@ return {
       },
       virtual_text = false,
       virtual_lines = { current_line = true }, -- 0.11+: only render on the cursor line
+      underline = { severity = { min = vim.diagnostic.severity.WARN } },
       severity_sort = true,
     })
 

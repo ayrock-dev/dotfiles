@@ -15,6 +15,7 @@ return {
 
       -- Built-in 0.11+ LSP defaults (annotated so they show up in which-key).
       -- These mappings are provided by Neovim core when an LSP is attached.
+      { 'gr', group = 'LSP actions', mode = { 'n' } },
       { 'grn', desc = 'LSP: rename symbol' },
       { 'gra', desc = 'LSP: code action', mode = { 'n', 'x' } },
       { 'grr', desc = 'LSP: references' },

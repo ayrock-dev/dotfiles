@@ -25,15 +25,25 @@ return {
     vim.treesitter.language.register('tsx', { 'typescriptreact' })
     vim.treesitter.language.register('bash', { 'sh', 'zsh' })
 
-    -- Enable highlighting + treesitter indent for any filetype whose
-    -- resolved parser is in our installed set. Mirrors the old
-    -- `highlight.disable` bigfile guard.
-    local installed = {}
-    for _, l in ipairs(langs) do
-      installed[l] = true
-    end
-
     local max_filesize = 1000 * 1024 -- 1MB
+
+    -- Enable highlighting + treesitter indent for a buffer/language.
+    -- Mirrors the old `highlight.disable` bigfile guard.
+    local function ts_attach(buf, lang)
+      -- Bigfile guard: skip treesitter on files >1MB
+      local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
+      if ok and stats and stats.size > max_filesize then
+        return
+      end
+
+      pcall(vim.treesitter.start, buf, lang)
+
+      -- Treesitter-based indentation, but only when the parser ships an
+      -- `indents` query; otherwise fall back to Vim's built-in indentexpr.
+      if vim.treesitter.query.get(lang, 'indents') ~= nil then
+        vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end
+    end
 
     vim.api.nvim_create_autocmd('FileType', {
       group = vim.api.nvim_create_augroup('ayrock.treesitter', { clear = true }),
@@ -41,20 +51,23 @@ return {
         local buf = args.buf
         local ft = vim.bo[buf].filetype
         local lang = vim.treesitter.language.get_lang(ft) or ft
-        if not installed[lang] then
-          return
+
+        local ts = require('nvim-treesitter')
+
+        if vim.tbl_contains(ts.get_installed('parsers'), lang) then
+          -- Parser already installed: attach immediately.
+          ts_attach(buf, lang)
+        elseif vim.tbl_contains(ts.get_available(), lang) then
+          -- Parser available but not installed: auto-install on first open,
+          -- then attach once the install finishes.
+          ts.install(lang):await(function()
+            ts_attach(buf, lang)
+          end)
+        else
+          -- Parser not managed by nvim-treesitter (may exist externally):
+          -- try to attach anyway; guarded by pcall above.
+          ts_attach(buf, lang)
         end
-
-        -- Bigfile guard: skip treesitter on files >1MB
-        local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
-        if ok and stats and stats.size > max_filesize then
-          return
-        end
-
-        pcall(vim.treesitter.start, buf, lang)
-
-        -- Treesitter-based indentation (experimental in main branch)
-        vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
       end,
     })
   end,
