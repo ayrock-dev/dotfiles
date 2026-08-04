@@ -1,6 +1,6 @@
 return {
   {
-    'echasnovski/mini.sessions',
+    'nvim-mini/mini.sessions',
     version = false,
     keys = {
       ['<leader>ss'] = { ':mksession!', mode = { 'n', 'x' }, desc = 'Save Session' },

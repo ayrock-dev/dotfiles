@@ -20,6 +20,8 @@
 =====================================================================
 --]]
 
+vim.loader.enable()
+
 require('ayrock.globals')
 
 require('ayrock.keymaps')
