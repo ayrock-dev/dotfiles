@@ -29,3 +29,6 @@ focus_agent = "prefix+alt+1..9"
 [ui.toast]
 # In-app toasts when a background agent finishes or needs input.
 delivery = "herdr"
+
+[ui]
+agent_panel_sort = "spaces"
