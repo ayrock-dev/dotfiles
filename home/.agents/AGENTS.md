@@ -25,6 +25,7 @@
 
 ## Development Style
 
+- **Avoid code comments at all costs**; be terse. Concision is key.
 - Prefer small, validated increments: for behavior changes and bug fixes, use pragmatic red-green-refactor when possible, usually one test at a time
 - For larger features, prefer tracer-bullet delivery: get a thin end-to-end slice working first, then deepen incrementally
 
