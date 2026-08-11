@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.83.0",
+  "lastChangelogVersion": "0.84.1",
   "theme": "dark",
   "defaultProvider": "cloudflare-ai-gateway",
   "defaultModel": "claude-opus-4-8",
@@ -11,6 +11,6 @@
     "npm:pi-skill-toggle"
   ],
   "editorPaddingX": 1,
-  "defaultThinkingLevel": "xhigh",
+  "defaultThinkingLevel": "medium",
   "hideThinkingBlock": false
 }
