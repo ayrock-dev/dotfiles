@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.2",
-    "@earendil-works/pi-coding-agent": "^0.80.3",
+    "@earendil-works/pi-coding-agent": "^0.84.3",
     "@total-typescript/tsconfig": "^1.0.4",
     "@types/node": "^22.0.0",
     "typescript": "^5.7.2"
