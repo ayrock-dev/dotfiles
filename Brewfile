@@ -1,4 +1,3 @@
-brew "anomalyco/tap/opencode"
 brew "coreutils"
 brew "fd"
 brew "fzf"
