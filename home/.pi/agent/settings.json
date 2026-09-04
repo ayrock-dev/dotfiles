@@ -2,7 +2,7 @@
   "lastChangelogVersion": "0.84.1",
   "theme": "dark",
   "defaultProvider": "cloudflare-ai-gateway",
-  "defaultModel": "claude-opus-4-8",
+  "defaultModel": "claude-opus-5",
   "enabledModels": [
     "cloudflare-ai-gateway/claude-*"
   ],
@@ -11,6 +11,6 @@
     "npm:pi-skill-toggle"
   ],
   "editorPaddingX": 1,
-  "defaultThinkingLevel": "medium",
+  "defaultThinkingLevel": "high",
   "hideThinkingBlock": false
 }

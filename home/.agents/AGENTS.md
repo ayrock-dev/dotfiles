@@ -26,7 +26,7 @@
 ## Development Style
 
 - **Avoid code comments at all costs**; be terse. Concision is key.
-- Prefer small, validated increments: for behavior changes and bug fixes, use pragmatic red-green-refactor when possible, usually one test at a time
+- Prefer small, validated increments: verify each one before moving on, rather than batching up unverified work
 - For larger features, prefer tracer-bullet delivery: get a thin end-to-end slice working first, then deepen incrementally
 
 ## Code Quality Standards
@@ -91,6 +91,16 @@
 - Batch independent reads/searches; parallelize when safe
 - Read enough context before editing; avoid thrashing
 - After edits, run a lightweight verification step when relevant
+
+## Sub-Agents
+
+- pi has no native sub-agent or task tool; a sub-agent is a real second agent process in a herdr tab, driven via the `herdr` CLI. See the `herdr` skill
+- Gate every fan-out on `HERDR_ENV=1`, and fall back to doing the work inline when it is unset
+- Default to a new labelled tab in the current workspace, not a split pane; run dev servers and test watchers there too
+- Create the tab with `--env <SKILL>_SUBAGENT=1`; a child that sees its own guard variable set works inline and never delegates further
+- Children share no context with the caller: put the complete brief in the prompt, including anything the caller alone can see
+- Never spawn a second agent to retry a failed one; close it and finish the work yourself
+- Close the tabs you created; leave the user's focus where it was
 
 ## Scope Control
 
