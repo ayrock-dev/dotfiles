@@ -1,23 +1,13 @@
 -- Picks the JS/TS/JSON/etc. formatter based on which config the project uses.
--- Repos with biome.json -> biome (with --write check, includes assist).
--- Otherwise -> prettier.
+-- See `ayrock.js_toolchain`; formatter kinds map 1:1 to conform formatter names.
 local function js_formatter(bufnr)
-  local fname = vim.api.nvim_buf_get_name(bufnr)
-  local biome_config = vim.fs.find({ 'biome.json', 'biome.jsonc' }, {
-    path = fname,
-    type = 'file',
-    upward = true,
-    limit = 1,
-  })[1]
-  if biome_config then
-    return { 'biome' }
-  end
-  return { 'prettier' }
+  return { require('ayrock.js_toolchain').formatter(bufnr).kind }
 end
 
 return {
   'stevearc/conform.nvim',
-  event = { 'BufWritePre' },
+  -- Format-on-save is driven by `ayrock.on_save` (which requires this module,
+  -- triggering the lazy load) so lint fixes are guaranteed to run first.
   cmd = { 'ConformInfo' },
   keys = {
     {
@@ -42,8 +32,6 @@ return {
       -- conform formatters first -> LSP formatters as fallback
       lsp_format = 'fallback',
     },
-    -- These options will be passed to conform.format()
-    format_on_save = { timeout_ms = 1500 },
     formatters_by_ft = {
       lua = { 'stylua' },
       javascript = js_formatter,

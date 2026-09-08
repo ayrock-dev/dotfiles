@@ -1,5 +1,5 @@
--- Biome LSP. Only attach if a biome config file is present in the file's
--- directory tree (avoids spurious diagnostics in repos that don't use biome).
+-- Biome LSP. Attaches only when `ayrock.js_toolchain` says biome owns the file
+-- (avoids spurious diagnostics in repos that don't use biome).
 ---@type vim.lsp.Config
 return {
   cmd = function(dispatchers, config)
@@ -26,16 +26,9 @@ return {
   },
   workspace_required = true,
   root_dir = function(bufnr, on_dir)
-    local filename = vim.api.nvim_buf_get_name(bufnr)
-    local biome_config = vim.fs.find({ 'biome.json', 'biome.jsonc' }, {
-      path = filename,
-      type = 'file',
-      upward = true,
-      limit = 1,
-    })[1]
-    if not biome_config then
-      return
+    local root = require('ayrock.js_toolchain').linter_root(bufnr, 'biome')
+    if root then
+      on_dir(root)
     end
-    on_dir(vim.fs.dirname(biome_config))
   end,
 }

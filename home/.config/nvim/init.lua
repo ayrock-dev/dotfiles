@@ -27,6 +27,7 @@ require('ayrock.globals')
 require('ayrock.keymaps')
 require('ayrock.opts')
 require('ayrock.highlight-on-yank')
+require('ayrock.on_save').setup()
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.uv.fs_stat(lazypath) then
