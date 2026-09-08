@@ -1,38 +1,5 @@
-local eslint_config_files = {
-  '.eslintrc',
-  '.eslintrc.js',
-  '.eslintrc.cjs',
-  '.eslintrc.yaml',
-  '.eslintrc.yml',
-  '.eslintrc.json',
-  'eslint.config.js',
-  'eslint.config.mjs',
-  'eslint.config.cjs',
-  'eslint.config.ts',
-  'eslint.config.mts',
-  'eslint.config.cts',
-}
-
--- Returns true if `package.json` at `dir` declares an `eslintConfig` field.
-local function package_json_has_eslint(dir)
-  local pkg = vim.fs.joinpath(dir, 'package.json')
-  local stat = vim.uv.fs_stat(pkg)
-  if not stat then
-    return false
-  end
-  local ok, contents = pcall(function()
-    local fd = assert(vim.uv.fs_open(pkg, 'r', 438))
-    local data = vim.uv.fs_read(fd, stat.size, 0)
-    vim.uv.fs_close(fd)
-    return data
-  end)
-  if not ok or not contents then
-    return false
-  end
-  local ok2, parsed = pcall(vim.json.decode, contents)
-  return ok2 and type(parsed) == 'table' and parsed.eslintConfig ~= nil
-end
-
+-- Eslint LSP. Attaches only when `ayrock.js_toolchain` says eslint owns the file
+-- (avoids spurious diagnostics in repos that don't use eslint).
 ---@type vim.lsp.Config
 return {
   cmd = function(dispatchers, config)
@@ -57,40 +24,10 @@ return {
   },
   workspace_required = true,
   root_dir = function(bufnr, on_dir)
-    -- Exclude deno projects
-    if vim.fs.root(bufnr, { 'deno.json', 'deno.jsonc', 'deno.lock' }) then
-      return
+    local root = require('ayrock.js_toolchain').linter_root(bufnr, 'eslint')
+    if root then
+      on_dir(root)
     end
-
-    local filename = vim.api.nvim_buf_get_name(bufnr)
-    -- Look for any eslint config file upward
-    local config = vim.fs.find(eslint_config_files, {
-      path = filename,
-      type = 'file',
-      upward = true,
-      limit = 1,
-    })[1]
-
-    local config_dir
-    if config then
-      config_dir = vim.fs.dirname(config)
-    else
-      -- Fall back to package.json with eslintConfig field
-      for dir in vim.fs.parents(filename) do
-        if package_json_has_eslint(dir) then
-          config_dir = dir
-          break
-        end
-      end
-    end
-
-    if not config_dir then
-      return
-    end
-
-    -- Anchor at the project root (lockfile or .git) if found, otherwise the config dir.
-    local project_root = vim.fs.root(bufnr, { 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml', 'bun.lockb', 'bun.lock', '.git' })
-    on_dir(project_root or config_dir)
   end,
   before_init = function(_, config)
     local root_dir = config.root_dir
@@ -152,22 +89,10 @@ return {
       return {}
     end,
   },
-  on_attach = function(client, bufnr)
+  -- Fix-on-save is owned by `ayrock.on_save`, which sequences fixes before formatting.
+  on_attach = function(_, bufnr)
     vim.api.nvim_buf_create_user_command(bufnr, 'LspEslintFixAll', function()
-      client:request_sync('workspace/executeCommand', {
-        command = 'eslint.applyAllFixes',
-        arguments = {
-          {
-            uri = vim.uri_from_bufnr(bufnr),
-            version = vim.lsp.util.buf_versions[bufnr],
-          },
-        },
-      }, nil, bufnr)
-    end, {})
-
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      buf = bufnr,
-      command = 'LspEslintFixAll',
-    })
+      require('ayrock.on_save').fix(bufnr, 'eslint')
+    end, { desc = 'Apply ESLint automatic fixes' })
   end,
 }

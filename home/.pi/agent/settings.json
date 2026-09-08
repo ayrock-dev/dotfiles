@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.84.1",
+  "lastChangelogVersion": "0.85.1",
   "theme": "dark",
   "defaultProvider": "cloudflare-ai-gateway",
   "defaultModel": "claude-opus-5",
