@@ -39,3 +39,7 @@ window-padding-x = 0
 window-padding-y = 0
 
 mouse-scroll-multiplier = 0.4
+
+# unbind native ghostty splits; prefer herdr panes
+keybind = super+d=unbind
+keybind = super+shift+d=unbind
