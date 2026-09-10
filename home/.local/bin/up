@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Open a herdr session for a project directory with a fixed tab layout.
+# Layout entries are "label:command"; an empty command leaves a plain shell.
+LAYOUT=("human:" "clanker:pi" "git:lazygit")
+
+die() {
+	printf 'up: %s\n' "$1" >&2
+	exit 1
+}
+
+for dep in herdr jq; do
+	command -v "$dep" >/dev/null ||
+		die "$dep is not on PATH. Install it with 'brew install $dep', then re-run up."
+done
+
+target=${1:-$PWD}
+dir=$(cd -P "$target" 2>/dev/null && pwd -P) ||
+	die "cannot open '$target': not a directory you can enter. Nothing was changed."
+label=$(basename "$dir")
+
+server_running() { herdr status server 2>/dev/null | grep -q '^status: running'; }
+
+if ! server_running; then
+	(herdr server >/dev/null 2>&1 &)
+	for _ in $(seq 1 50); do
+		server_running && break
+		sleep 0.1
+	done
+	server_running ||
+		die "herdr server did not come up within 5s. Run 'herdr server' in a terminal to see why it failed."
+fi
+
+workspace_for_dir() {
+	herdr pane list |
+		jq -r --arg d "$dir" 'first(.result.panes[] | select(.cwd == $d) | .workspace_id) // empty'
+}
+
+attach() {
+	[ "${HERDR_ENV:-}" = 1 ] && exit 0
+	exec herdr
+}
+
+ws=$(workspace_for_dir)
+if [ -n "$ws" ]; then
+	herdr workspace focus "$ws" >/dev/null
+	attach
+fi
+
+created=$(herdr workspace create --cwd "$dir" --label "$label" --focus) ||
+	die "herdr rejected the workspace for '$dir'. The session is otherwise untouched."
+ws=$(printf '%s' "$created" | jq -r '.result.workspace.workspace_id')
+first_tab=$(printf '%s' "$created" | jq -r '.result.tab.tab_id')
+first_pane=$(printf '%s' "$created" | jq -r '.result.root_pane.pane_id')
+[ -n "$ws" ] && [ "$ws" != null ] ||
+	die "herdr did not return a workspace id for '$dir'. Run 'herdr workspace list' to check the session state."
+
+run_in() {
+	[ -n "$2" ] || return 0
+	herdr pane run "$1" "$2" >/dev/null ||
+		printf 'up: could not start %s in pane %s; the tab is open as a plain shell.\n' "$2" "$1" >&2
+}
+
+for i in "${!LAYOUT[@]}"; do
+	entry=${LAYOUT[$i]}
+	tab_label=${entry%%:*}
+	cmd=${entry#*:}
+	if [ "$i" -eq 0 ]; then
+		herdr tab rename "$first_tab" "$tab_label" >/dev/null
+		run_in "$first_pane" "$cmd"
+		continue
+	fi
+	tab=$(herdr tab create --workspace "$ws" --cwd "$dir" --label "$tab_label" --no-focus) ||
+		die "could not create the '$tab_label' tab. Workspace '$label' is open with the tabs created so far."
+	run_in "$(printf '%s' "$tab" | jq -r '.result.root_pane.pane_id')" "$cmd"
+done
+
+herdr tab focus "$first_tab" >/dev/null
+attach
