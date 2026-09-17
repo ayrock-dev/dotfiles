@@ -22,6 +22,11 @@ return {
     notify_on_error = true,
     formatters = {
       biome = {
+        command = function(_, ctx)
+          local root = require('ayrock.js_toolchain').formatter(ctx.buf).root
+          local local_cmd = root and vim.fs.joinpath(root, 'node_modules/.bin/biome')
+          return local_cmd and vim.fn.executable(local_cmd) == 1 and local_cmd or 'biome'
+        end,
         -- override default biome config https://github.com/stevearc/conform.nvim/blob/master/lua/conform/formatters/biome.lua
         -- in order to support assist (which only runs on biome check)
         args = { 'check', '--write', '--stdin-file-path', '$FILENAME' },
