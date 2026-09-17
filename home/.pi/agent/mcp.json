@@ -10,6 +10,10 @@
       "env": { "EXA_API_KEY": "${EXA_API_KEY}" },
       "lifecycle": "lazy"
     },
+    "grep": {
+      "url": "https://mcp.grep.app",
+      "lifecycle": "lazy"
+    },
     "rive": {
       "url": "http://127.0.0.1:9791/mcp",
       "lifecycle": "lazy"
