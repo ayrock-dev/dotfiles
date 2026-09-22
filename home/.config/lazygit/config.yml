@@ -3,6 +3,9 @@ gui:
 os:
   editPreset: "nvim"
 git:
+  diffRenderers:
+    - colorArg: always
+      command: hunk pager
   log:
     showGraph: always
 notARepository: skip
