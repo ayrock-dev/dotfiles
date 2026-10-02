@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.87.0",
+  "lastChangelogVersion": "1.0.0",
   "theme": "dark",
   "defaultProvider": "cloudflare-ai-gateway",
   "defaultModel": "claude-opus-5",
@@ -16,7 +16,9 @@
     "openai-codex/gpt-6-astra:high",
     "openai-codex/gpt-6-astra:low"
   ],
-  "packages": ["npm:pi-mcp-adapter", "npm:pi-skill-toggle"],
+  "packages": [
+    "npm:pi-skill-toggle"
+  ],
   "editorPaddingX": 1,
   "defaultThinkingLevel": "high",
   "hideThinkingBlock": false

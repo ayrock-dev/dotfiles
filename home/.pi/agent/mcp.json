@@ -1,22 +1,18 @@
 {
   "mcpServers": {
     "notion": {
-      "url": "https://mcp.notion.com/mcp",
-      "auth": "oauth"
+      "url": "https://mcp.notion.com/mcp"
     },
     "exa": {
       "command": "npx",
       "args": ["-y", "exa-mcp-server"],
-      "env": { "EXA_API_KEY": "${EXA_API_KEY}" },
-      "lifecycle": "lazy"
+      "env": { "EXA_API_KEY": "${EXA_API_KEY}" }
     },
     "grep": {
-      "url": "https://mcp.grep.app",
-      "lifecycle": "lazy"
+      "url": "https://mcp.grep.app"
     },
     "rive": {
-      "url": "http://127.0.0.1:9791/mcp",
-      "lifecycle": "lazy"
+      "url": "http://127.0.0.1:9791/mcp"
     }
   }
 }
