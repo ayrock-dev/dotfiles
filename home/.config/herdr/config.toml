@@ -31,4 +31,7 @@ focus_agent = "prefix+alt+1..9"
 delivery = "herdr"
 
 [ui]
-agent_panel_sort = "spaces"
+agent_panel_sort = "priority"
+show_agent_labels_on_pane_borders = false
+status_indicators = "symbols"
+confirm_close = true
