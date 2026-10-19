@@ -14,7 +14,7 @@ return {
       },
       sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch' },
+        lualine_b = { 'branch', 'git_ahead_behind' },
         lualine_c = {
           {
             'filename',

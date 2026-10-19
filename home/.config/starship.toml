@@ -102,11 +102,12 @@ format = '[ $symbol $branch ]($style)'
 style = 'fg:bright-blue bg:bright-black'
 
 [git_status]
+untracked = ""
 format = '[$ahead_behind]($style)'
 style = 'fg:bright-blue bg:bright-black'
-ahead = '⇡${count}'
-diverged = '⇕⇡${ahead_count}⇣${behind_count}'
-behind = '⇣${count}'
+ahead = '[↑${count}](fg:green bg:bright-black)'
+diverged = '[↑${ahead_count}](fg:green bg:bright-black) [↓${behind_count}](fg:red bg:bright-black)'
+behind = '[↓${count}](fg:red bg:bright-black)'
 
 [bun]
 symbol = "🍞 "
