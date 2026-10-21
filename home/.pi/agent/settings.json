@@ -17,7 +17,8 @@
     "openai-codex/gpt-6-astra:low"
   ],
   "packages": [
-    "npm:pi-skill-toggle"
+    "npm:pi-skill-toggle",
+    "npm:@normful/pi-auto-name"
   ],
   "editorPaddingX": 1,
   "defaultThinkingLevel": "high",

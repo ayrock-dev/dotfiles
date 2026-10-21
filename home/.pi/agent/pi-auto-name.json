@@ -1,0 +1,10 @@
+{
+  "namingModel": "openai-codex/gpt-6-luna",
+  "surfaces": {
+    "renameHerdrPane": false,
+    "renameHerdrTab": false,
+    "renameTmuxWindow": false,
+    "renameZellijPane": false,
+    "renameZellijTab": false
+  }
+}

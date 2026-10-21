@@ -5,6 +5,7 @@ agent/*
 !agent/AGENTS.md
 !agent/settings.json
 !agent/mcp.json
+!agent/pi-auto-name.json
 !agent/skills/
 !agent/skills/**
 !agent/extensions/

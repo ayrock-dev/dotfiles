@@ -104,3 +104,9 @@ if command_exists npm && [[ -f "$HOME/.pi/package.json" ]]; then
     (cd "$HOME/.pi" && npm install)
 fi
 
+# Pi packages declared in ~/.pi/agent/settings.json
+if command_exists pi; then
+    echo "Installing pi packages..."
+    pi update --extensions
+fi
+

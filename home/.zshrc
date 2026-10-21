@@ -19,3 +19,10 @@ alias lg="lazygit"
 
 # starship
 eval "$(starship init zsh)"
+
+# herdr-automatic-rename: name tabs after the foreground command
+for _f in ${XDG_CONFIG_HOME}/herdr/plugins/github-installations/herdr-automatic-rename-*/*/checkout/shell/hook.zsh(N) \
+          ${XDG_CONFIG_HOME}/herdr/plugins/github/herdr-automatic-rename-*/shell/hook.zsh(N); do
+  source $_f; break
+done
+unset _f

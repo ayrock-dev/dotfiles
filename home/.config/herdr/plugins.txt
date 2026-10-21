@@ -1,2 +1,3 @@
 # herdr plugins installed from GitHub on ./install
+qu8n/herdr-automatic-rename
 plannotator/herdr-annotate
