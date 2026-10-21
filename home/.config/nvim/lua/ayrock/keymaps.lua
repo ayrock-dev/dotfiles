@@ -34,6 +34,18 @@ vim.keymap.set('v', 'H', '^', { desc = 'Move to beginning of line in visual mode
 vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", { desc = 'Move selected block down' })
 vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", { desc = 'Move selected block up' })
 
+vim.keymap.set('x', '<leader>a', function()
+  vim.cmd('normal! "zy')
+  local runtime_dir = vim.env.XDG_RUNTIME_DIR
+  if not runtime_dir or runtime_dir == '' then
+    runtime_dir = vim.uv.os_tmpdir()
+  end
+  local handoff_dir = runtime_dir .. '/herdr-annotate-' .. vim.uv.getuid()
+  vim.fn.mkdir(handoff_dir, 'p', '0700')
+  vim.fn.writefile(vim.split(vim.fn.getreg('z'), '\n'), handoff_dir .. '/selection')
+  vim.fn.jobstart({ 'herdr', 'plugin', 'action', 'invoke', 'annotate.capture' }, { detach = true })
+end, { desc = 'Annotate selection in Herdr' })
+
 vim.keymap.set('x', '<<', function()
   vim.cmd('normal! <<')
   vim.cmd('normal! gv')

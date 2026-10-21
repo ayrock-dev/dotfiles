@@ -1,3 +1,5 @@
+tap "plannotator/tap"
+
 brew "coreutils"
 brew "fd"
 brew "fzf"
@@ -11,6 +13,7 @@ brew "lazygit"
 brew "neovim"
 brew "parallel"
 brew "pi-coding-agent"
+brew "plannotator-tui"
 brew "python@3.11"
 brew "ripgrep"
 brew "starship"

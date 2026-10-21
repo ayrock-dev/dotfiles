@@ -46,6 +46,9 @@ fi
 # Brewfile
 if [[ -f "Brewfile" ]]; then
     echo "Installing packages from Brewfile..."
+    if brew help trust >/dev/null 2>&1; then
+        brew trust plannotator/tap >/dev/null
+    fi
     brew bundle
 else
     echo "Brewfile not found. Skipping package installation."
@@ -58,6 +61,16 @@ stow -R -v -t ~ -d ./home .
 if command_exists herdr; then
     echo "Installing herdr pi integration..."
     herdr integration install pi
+    while IFS= read -r plugin_source || [[ -n "$plugin_source" ]]; do
+        plugin_source="${plugin_source%%#*}"
+        plugin_source="${plugin_source//[[:space:]]/}"
+        [[ -z "$plugin_source" ]] && continue
+        echo "Syncing herdr plugin: $plugin_source"
+        herdr plugin install "$plugin_source" --yes
+    done < ./home/.config/herdr/plugins.txt
+    if herdr status server >/dev/null 2>&1; then
+        herdr server reload-config >/dev/null
+    fi
 else
     echo "herdr not found; skipping herdr integration setup"
 fi

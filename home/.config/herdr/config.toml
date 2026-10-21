@@ -26,6 +26,40 @@ split_horizontal = "prefix+enter"
 # Jump straight to an agent pane by index.
 focus_agent = "prefix+alt+1..9"
 
+# Moved from prefix+o to leave it free for Annotate document review.
+open_notification_target = "prefix+i"
+
+# Herdr Annotate: terminal comments, document review, and agent feedback.
+[[keys.command]]
+key = "prefix+a"
+type = "plugin_action"
+command = "annotate.capture"
+description = "Annotate selected terminal text"
+
+[[keys.command]]
+key = "prefix+shift+a"
+type = "plugin_action"
+command = "annotate.copy-context"
+description = "Copy annotations as agent context"
+
+[[keys.command]]
+key = "prefix+m"
+type = "plugin_action"
+command = "annotate.manage"
+description = "Manage annotations"
+
+[[keys.command]]
+key = "prefix+o"
+type = "plugin_action"
+command = "annotate.open"
+description = "Review documents in the current folder"
+
+[[keys.command]]
+key = "prefix+shift+o"
+type = "plugin_action"
+command = "annotate.last"
+description = "Review the agent's last reply"
+
 [ui.toast]
 # In-app toasts when a background agent finishes or needs input.
 delivery = "herdr"

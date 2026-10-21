@@ -1,0 +1,2 @@
+# herdr plugins installed from GitHub on ./install
+plannotator/herdr-annotate
