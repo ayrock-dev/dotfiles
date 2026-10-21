@@ -64,6 +64,9 @@ description = "Review the agent's last reply"
 # In-app toasts when a background agent finishes or needs input.
 delivery = "herdr"
 
+[ui.toast.herdr]
+position = "top-right"
+
 [ui]
 agent_panel_sort = "priority"
 show_agent_labels_on_pane_borders = false
@@ -72,3 +75,7 @@ confirm_close = true
 # Let herdr-automatic-rename name new tabs instead of prompting.
 prompt_new_tab_name = false
 prompt_new_workspace_name = true
+
+[experimental]
+# Save recent pane screen history across full server restarts.
+pane_history = true
